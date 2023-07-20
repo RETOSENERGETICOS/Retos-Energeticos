@@ -73,6 +73,7 @@
                                 <tr>
                                     <th>Estado</th>
                                     <th>Acciones</th>
+                                    <th>PO#</th>
                                     <th>Fecha</th>
                                     <th>Solicitante</th>
                                     <th>Suministrador</th>
@@ -128,14 +129,14 @@
                                             echo '<td>
                                             <div class="btn-group">
                                                 <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="fadeIn animated bx bx-edit-alt"></i></button>
-                                                <button class="btn btn-danger BorrarCO" COid="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>';
-                                                if($value["tipo_proceso"] == "Solicitud de compra"){
-                                                    echo '<button class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="'.$value['id'].'" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                                <button class="btn btn-danger BorrarCO" COid="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>
+                                               
+                                                <button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="'.$value['id'].'" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                               
+                                            
+                                                <button style="background-color:#85929E;" class="btn btn-secondary btnImprimirFactura" idSolicitudFac="'.$value['id'].'" title="Orden de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>
                                                     </div>';
-                                                }elseif($value["tipo_proceso"] == "Orden de compra"){
-                                                    echo '<button class="btn btn-secondary btnImprimirFactura" idSolicitudFac="'.$value['id'].'" title="PDF"><i class="bi bi-file-earmark-pdf"></i></button>
-                                                    </div>';
-                                                }
+                                                
                                                 
 
                                             ?>
@@ -187,6 +188,10 @@
                 <h5 class="modal-title">Solicitud de compra</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 1%"></button>
             </div>
+            <div class="modal-header">
+                <label style="margin-left: 86%;" for="validationDefault01" class="form-label">PO#:</label>
+                <input style="width: 10%; margin-right:1%;" type="text" class="form-control" value="" name="codigoN" id="codigoN" require>
+            </div>
             <div class="row" style="background-color:#fff;">
                 <div class="col-xl-7 mx-auto">
 
@@ -207,7 +212,7 @@
                                         $codigo+=1;
                                        
                                         ?>
-                                         <input type="text" class="form-control" value="<?php echo $codigo.'_'.$ultimosDosDigitos ?>" name="codigoN" id="codigoN" >
+                                         
                                         <select class="form-select" value="" name="proveedorN" id="proveedorN" required>
                                             <option value="" name="" id="proveedorN">...</option>
                                             <?php

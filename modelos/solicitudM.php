@@ -206,7 +206,6 @@ class SolicitudM extends ConexionBD
         $email = $_SESSION["correo"];
         $iniciales = $_SESSION["iniciales_firma"];
         $idsuario = $_SESSION["id"];
-        // $Creofechayhora = $creo . ' ' . $fechatext;
 
         $pdo = ConexionBD::cBD()->prepare("INSERT INTO $tablaBD 
         (id_provedor,codigo,atnproveedor_soli, lugarentr_solicitud,atn_lentrega,cp_lentrega,
@@ -215,7 +214,7 @@ class SolicitudM extends ConexionBD
         proyecto_soli,seguro_inclu,oferta_suminis,condicion_especial,ref_suministrador,
         descripcion,cantidad,precio_unitario,tasa,total,subtotal_soli,taxes,
         pago_envio_soli,otros_soli,total_soli,moneda,cuadro_msoli,ofertaprove_soli,
-        especificacion_tecsoli,status, estado,id_tipo_proceso,
+        especificacion_tecsoli,comentarios,status, estado,id_tipo_proceso,
         id_usuario) 
 
          
@@ -226,7 +225,7 @@ class SolicitudM extends ConexionBD
         :proyecto_soli,:seguro_inclu,:oferta_suminis,:condicion_especial,:ref_suministrador,
         :descripcion,:cantidad,:precio_unitario,:tasa,:total,:subtotal_soli,:taxes,
         :pago_envio_soli,:otros_soli,:total_soli,:moneda,:cuadro_msoli,:ofertaprove_soli,
-        :especificacion_tecsoli,1, 1,1,$idsuario)");
+        :especificacion_tecsoli,1,1, 5,2,$idsuario)");
 
         $pdo->bindParam(":id_provedor", $datosC["id_provedor"], PDO::PARAM_INT);
         $pdo->bindParam(":codigo", $datosC["codigo"], PDO::PARAM_STR);
@@ -268,6 +267,9 @@ class SolicitudM extends ConexionBD
         } else {
             return false;
         }
+
+        $pdo->close();
+        $pdo = null;
 
         $pdo->close();
         $pdo = null;
@@ -376,7 +378,7 @@ class SolicitudM extends ConexionBD
         proyecto_soli,seguro_inclu,oferta_suminis,condicion_especial,ref_suministrador,
         descripcion,cantidad,precio_unitario,tasa,total,subtotal_soli,taxes,
         pago_envio_soli,otros_soli,total_soli,moneda,cuadro_msoli,ofertaprove_soli,
-        especificacion_tecsoli,status, estado,id_tipo_proceso,
+        especificacion_tecsoli,comentarios,status, estado,id_tipo_proceso,
         id_usuario) 
 
          
@@ -387,7 +389,7 @@ class SolicitudM extends ConexionBD
         :proyecto_soli,:seguro_inclu,:oferta_suminis,:condicion_especial,:ref_suministrador,
         :descripcion,:cantidad,:precio_unitario,:tasa,:total,:subtotal_soli,:taxes,
         :pago_envio_soli,:otros_soli,:total_soli,:moneda,:cuadro_msoli,:ofertaprove_soli,
-        :especificacion_tecsoli,1, 2,2,$idsuario)");
+        :especificacion_tecsoli,1,1, 2,2,$idsuario)");
 
         $pdo->bindParam(":id_provedor", $datosC["id_provedor"], PDO::PARAM_INT);
         $pdo->bindParam(":codigo", $datosC["codigo"], PDO::PARAM_STR);
@@ -444,11 +446,11 @@ class SolicitudM extends ConexionBD
     {
 
         if (isset($comentario) && !empty($comentario)) {
-            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-             estado = 3, id_tipo_proceso= 1  WHERE id = :id");
+            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentariorerch = :comentariorerch, 
+             estado = 3, id_tipo_proceso= 1   WHERE id = :id");
 
             $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
-            $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
+            $pdo->bindParam(":comentariorerch", $datosC["comentariorerch"], PDO::PARAM_STR);
 
 
             if ($pdo->execute()) {
@@ -462,11 +464,11 @@ class SolicitudM extends ConexionBD
 
         } else {
 
-            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
+            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET 
              estado = 2, id_tipo_proceso= 2  WHERE id = :id");
 
             $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
-            $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
+           
 
             if ($pdo->execute()) {
                 return true;
@@ -478,99 +480,37 @@ class SolicitudM extends ConexionBD
         }
     }
 
-
-
-    /* --------------------------------------------------------------------------*/
-    /*                             Rechazar datos solicitud                    */
-    /* --------------------------------------------------------------------------*/
-    // static public function ActualizarARSolicitudM($tablaBD, $datosC)   {
-
-
-    //         $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-    //          estado = 2, id_tipo_proceso = 2  WHERE id = :id");
-
-    //         $pdo->bindParam(":id ", $datosC["id"], PDO::PARAM_INT);
-    //         $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
-
-    //         if ($pdo->execute()) {
-    //             return true;
-    //         } else {
-    //             return false;
-    //         }
-
-    //         $pdo->close();
-    //         $pdo = null;
-
-
-    // }
-
-
-    /* --------------------------------------------------------------------------*/
-    /*                             aprobar datos solicitud                    */
-    /* --------------------------------------------------------------------------*/
-     static public function ActualizarARaprobarSolicitudM($tablaBD, $datosC, $comentario, $comentario2)
-     {
-
-          if ($comentario != null) {
-              $estado = 3;
-              $tipo_orden=1;
-          } else if ($comentario2 == null) {
-              $estado = 2;
-              $tipo_orden=2;
-          }
-             $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-              estado =3 , id_tipo_proceso = 1   WHERE id = :id");
-
-             $pdo->bindParam(":id ", $datosC["id"], PDO::PARAM_INT);
-             $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
-
-             // $pdo->bindParam(":estado", 2, PDO::PARAM_STR);
-
-
-             if ($pdo->execute()) {
-                 return true;
-             } else {
-                 return false;
-             }
-
-             $pdo->close();
-             $pdo = null;
-     } 
-
-
-
     /* --------------------------------------------------------------------------*/
     /*                            En espera datos solicitud director           */
     /* --------------------------------------------------------------------------*/
-    static public function ActualizarSolicitudDM($tablaBD, $datosC, $comentario)
+    static public function ActualizarSolicitudDM($tablaBD, $datosC, $comentario,$comentario2)
     {
 
         if (isset($comentario) && !empty($comentario)) {
-            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-              estado = 3  WHERE id = :id");
+            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentariorerch = :comentariorerch, 
+             estado = 3, id_tipo_proceso= 1  WHERE id = :id");
 
-            $pdo->bindParam(":id ", $datosC["id"], PDO::PARAM_INT);
-            $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
-
-            // $pdo->bindParam(":estado", 2, PDO::PARAM_STR);
+            $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
+            $pdo->bindParam(":comentariorerch", $datosC["comentariorerch"], PDO::PARAM_STR);
 
 
             if ($pdo->execute()) {
                 return true;
-            } else {
+            } else{
                 return false;
             }
 
             $pdo->close();
             $pdo = null;
+
         } else if (isset($comentario2) && !empty($comentario2)) {
 
-            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-              estado = 4, id_tipo_proceso= 2  WHERE id = :id");
+            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentariorerch = :comentariorerch, 
+             comentarioesp = :comentarioesp ,  estado = 4, id_tipo_proceso= 2  WHERE id = :id");
 
             $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
-            $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
-
+            $pdo->bindParam(":comentariorerch", $datosC["comentariorerch"], PDO::PARAM_STR);
+            $pdo->bindParam(":comentarioesp", $datosC["comentarioesp"], PDO::PARAM_STR);
             if ($pdo->execute()) {
                 return true;
             } else {
@@ -581,12 +521,12 @@ class SolicitudM extends ConexionBD
             $pdo = null;
         } else {
 
-            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentarios = :comentarios, 
-             estado = 5, id_tipo_proceso= 2  WHERE id = :id");
+            $pdo = ConexionBD::cBD()->prepare("UPDATE $tablaBD SET comentariorerch = :comentariorerch, 
+             comentarioesp = :comentarioesp , estado = 5, id_tipo_proceso= 2  WHERE id = :id");
 
             $pdo->bindParam(":id", $datosC["id"], PDO::PARAM_INT);
-            $pdo->bindParam(":comentarios", $datosC["comentarios"], PDO::PARAM_STR);
-
+            $pdo->bindParam(":comentariorerch", $datosC["comentariorerch"], PDO::PARAM_STR);
+            $pdo->bindParam(":comentarioesp", $datosC["comentarioesp"], PDO::PARAM_STR);
             if ($pdo->execute()) {
                 return true;
             } else {

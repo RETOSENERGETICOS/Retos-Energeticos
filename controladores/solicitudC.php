@@ -14,7 +14,7 @@ class SolicitudC
 
         //Creamos la variable de Bd
 
-        $tablaBD = "vista_solicitud_general";
+        $tablaBD = "vista_solicitud_factura";
 
         //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
         $respuesta = SolicitudM::VerSolicitudM($tablaBD, $item, $valor);
@@ -326,6 +326,7 @@ class SolicitudC
     /* -------------------------------------------------------------------------- */
     /*                               CREAR ORDEN COMPRA MANAGER                   */
     /* -------------------------------------------------------------------------- */
+    
     static public function CrearSolicitudMC()
     {
 
@@ -390,12 +391,12 @@ class SolicitudC
                 "seguro_inclu" => $_POST["seguroincluN"],
                 "oferta_suminis" => $_POST["ofertasumN"],
                 "condicion_especial" => $_POST["condicionesespN"],
-                "ref_suministrador" => json_decode($solicitante),
-                "descripcion" => json_decode($descripcion),
-                "cantidad" => json_decode($cantidad),
-                "precio_unitario" => json_decode($precuni),
-                "tasa" => json_decode($tasa),
-                "total" => json_decode($totales),
+                "ref_suministrador" => json_encode($solicitante),
+                "descripcion" => json_encode($descripcion),
+                "cantidad" => json_encode($cantidad),
+                "precio_unitario" => json_encode($precuni),
+                "tasa" => json_encode($tasa),
+                "total" => json_encode($totales),
                 "subtotal_soli" => $_POST["subtotalN"],
                 "taxes" => $_POST["taxesN"],
                 "pago_envio_soli" => $_POST["shippinglN"],
@@ -413,7 +414,7 @@ class SolicitudC
 
             if ($respuesta) {
                 echo '<script>
-            window.location = "solicitud-compras";
+            window.location = "manager";
             </script>';
             }
         }
@@ -429,7 +430,7 @@ class SolicitudC
 			$tablaBD = "solicitud_compra";
 
 			$datosC = array(
-				"id" => $_POST["idSolicitud"], "comentarios" => $_POST["comentarioRechazo"]
+				"id" => $_POST["idSolicitud"], "comentariorerch" => $_POST["comentarioRechazo"]
                 
 			);
 
@@ -439,16 +440,7 @@ class SolicitudC
 			if ($respuesta == true) {
 
 				echo '
-				<div class="alert alert-dismissible fade show py-2 bg-success">
-                <div class="d-flex align-items-center">
-                  <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
-                  </div>
-                  <div class="ms-3">
-                    <div class="text-white">Usuario actualizado con exito!</div>
-                  </div>
-                </div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
+				
 				<script>
 						window.location ="manager";
 						</script>';
@@ -474,33 +466,27 @@ class SolicitudC
     public function ActualizarDSolicitudC()
 	{
        
-		if (isset($_POST["comentarioRechazo"])) {		
+        if (isset($_POST["comentarioRechazo"])) {		
             $comentario = $_POST["comentarioRechazo"];
+
+            echo $comentario;
+            $comentario2 = $_POST["comentarioenespera"];
 			$tablaBD = "solicitud_compra";
 
 			$datosC = array(
-				"id" => $_POST["idSolicitud"], "comentarios" => $_POST["comentarioRechazo"]
+				"id" => $_POST["idSolicitud"], "comentariorerch" => $_POST["comentarioRechazo"],"comentarioesp" => $_POST["comentarioenespera"]
                 
 			);
 
-			$respuesta = SolicitudM::ActualizarSolicitudDM($tablaBD, $datosC,$comentario);
+			$respuesta = SolicitudM::ActualizarSolicitudDM($tablaBD, $datosC,$comentario,$comentario2);
 
 
 			if ($respuesta == true) {
 
 				echo '
-				<div class="alert alert-dismissible fade show py-2 bg-success">
-                <div class="d-flex align-items-center">
-                  <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
-                  </div>
-                  <div class="ms-3">
-                    <div class="text-white">Usuario actualizado con exito!</div>
-                  </div>
-                </div>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
+			
 				<script>
-						window.location ="manager";
+						window.location ="orden-compraD";
 						</script>';
 			} else {
 
@@ -515,123 +501,10 @@ class SolicitudC
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				  </div>';
 			}
-		}
+        }
 	}
 
-    /* -------------------------------------------------------------------------- */
-    /*                       ACTUALIZAR ESTADO DE SOLICITUD MANAGER                       */
-    /* -------------------------------------------------------------------------- */
-
-    //  public function ActualizarDSolicitudC()
-	//  {
-
-	//  	if ($_POST['ace'] || $_POST['R']) {
-    //          $comentario = $_POST["comentarioRechazo"];
-    //          $comentario2 = $_POST["aceptar"];
-	// 		$tablaBD = "solicitud_compra";
-
-	// 		$datosC = array(
-	//  			"id" => $_POST["idSolicitud"], "comentarios" => $_POST["comentarioRechazos"]
-
-	//  		);
-
-    //          if($_POST['comentarioenace']){
-    //              $respuesta = SolicitudM::ActualizarSolicitudDM($tablaBD, $datosC,$comentario);
-    //          }else if ($_POST['comentarioR']) {
-    //             $respuesta = SolicitudM::ActualizarSolicitudDM($tablaBD, $datosC,$comentario);
-    //          }
-
-	//  		if ($respuesta == true) {
-
-	//  			echo '
-	//  			<div class="alert alert-dismissible fade show py-2 bg-success">
-    //              <div class="d-flex align-items-center">
-    //                <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
-    //                </div>
-    //                <div class="ms-3">
-    //                  <div class="text-white">Usuario actualizado con exito!</div>
-    //                </div>
-    //              </div>
-    //              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    //            </div>
-	//  			<script>
-	//  					window.location ="manager";
-	//  					</script>';
-	//  		} else {
-
-	//  			echo '<div class="alert alert-dismissible fade show py-2 bg-danger">
-	//  				<div class="d-flex align-items-center">
-	//  				  <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
-	//  				  </div>
-	//  				  <div class="ms-3">
-	//  					<div class="text-white">Error al actualizar !</div>
-	//  				  </div>
-	//  				</div>
-	//  				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	//  			  </div>';
-	//  		}
-	//  	}
-	// }
-
-
-    
-
-
-     /* -------------------------------------------------------------------------- */
-    /*                       ACTUALIZAR ESTADO DE SOLICITUD                       */
-    /* -------------------------------------------------------------------------- */
-
-    // public function ActualizarDIRECSolicitudDC()
-	// {
-
-	// 	if ($_POST['comentarioenace']) {
-    //         // $comentario = $_POST["comentarioRechazo"];
-    //         // $comentario2 = $_POST["aceptar"];
-	// 		$tablaBD = "solicitud_compra";
-
-	// 		$datosC = array(
-	// 			"id" => $_POST["idSolicitud"], "comentarios" => $_POST["comentarioRechazos"]
-
-	// 		);
-
-    //         if($_POST['comentarioenace']){
-    //             $respuesta = SolicitudM::ActualizarARSolicitudM($tablaBD, $datosC);
-    //         }else if ($_POST['comentarioR']) {
-    //            $respuesta = SolicitudM::ActualizarARSolicitudM($tablaBD, $datosC);
-    //         }
-
-	// 		if ($respuesta == true) {
-
-	// 			echo '
-	// 			<div class="alert alert-dismissible fade show py-2 bg-success">
-    //             <div class="d-flex align-items-center">
-    //               <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
-    //               </div>
-    //               <div class="ms-3">
-    //                 <div class="text-white">Usuario actualizado con exito!</div>
-    //               </div>
-    //             </div>
-    //             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    //           </div>
-	// 			<script>
-	// 					window.location ="manager";
-	// 					</script>';
-	// 		} else {
-
-	// 			echo '<div class="alert alert-dismissible fade show py-2 bg-danger">
-	// 				<div class="d-flex align-items-center">
-	// 				  <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
-	// 				  </div>
-	// 				  <div class="ms-3">
-	// 					<div class="text-white">Error al actualizar !</div>
-	// 				  </div>
-	// 				</div>
-	// 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	// 			  </div>';
-	// 		}
-	// 	}
-	// }
-
+  
 
     /* -------------------------------------------------------------------------- */
     /*                             ELIMINAR SOLICITUD                             */

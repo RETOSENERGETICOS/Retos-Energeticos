@@ -645,3 +645,20 @@ $(".TB").on("click", ".BorrarMA", function(){
     })
         
 })
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                        CONVERTIR EN MAYUSCULAS INPUT                       */
+/* -------------------------------------------------------------------------- */
+
+function convertirAMayusculas(inputElement) {
+  // Obtener el valor actual del campo de entrada
+  const textoIngresado = inputElement.value;
+  
+  // Convertir el texto a mayúsculas
+  const textoEnMayusculas = textoIngresado.toUpperCase();
+  
+  // Asignar el texto en mayúsculas al campo de entrada
+  inputElement.value = textoEnMayusculas;
+}
