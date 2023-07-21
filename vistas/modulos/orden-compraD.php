@@ -139,13 +139,13 @@
 
                                             echo '<td>
                                             <div class="btn-group">
-                                                <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="fadeIn animated bx bx-edit-alt"></i></button>
+                                                <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="lni lni-eye"></i></button>
                                                 <button class="btn btn-danger BorrarD" Did="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>
-                                                <button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="'.$value['id'].'" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>                                            
-                                                <button style="background-color:#85929E;" class="btn btn-secondary btnImprimirFactura" idSolicitudFac="'.$value['id'].'" title="Orden de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                                <button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="' . $value['id'] . '" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>                                            
+                                                <button style="background-color:#85929E;" class="btn btn-secondary btnImprimirFactura" idSolicitudFac="' . $value['id'] . '" title="Orden de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>
                                                 
                                             </div>';
-                                           
+
 
                                             ?>
                                         </td>
@@ -158,7 +158,7 @@
 
 
 
-                                        </tr> <?php } ?> 
+                                    </tr> <?php } ?>
 
                             </tbody>
                         </table>
@@ -196,10 +196,7 @@
                 <h5 class="modal-title">Orden de compra</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 1%"></button>
             </div>
-            <div class="modal-header">
-                <label style="margin-left: 86%;" for="validationDefault01" class="form-label">PO#:</label>
-                <input style="width: 10%; margin-right:1%;" type="text" class="form-control" value="" name="codigoN" id="codigoN" require>
-            </div>
+
             <div class="row" style="background-color:#fff;">
                 <div class="col-xl-7 mx-auto">
 
@@ -208,12 +205,14 @@
                         <div class="card-body">
                             <div class="p-4 border rounded">
                                 <form id="solicitante" class="row g-3 needs-validation" method="post" enctype="multipart/form-data">
-                                    <!-- style="background-color: #1b4e88;color: #fff;
-                                     padding-bottom: 2%; text-align:center;" -->
+                                    <div class="modal-header">
+                                        <label for="validationDefault01" class="form-label">PO#:</label>
+                                        <input style="width: 18%; margin-right: 77%;" type="text" class="form-control" value="" name="codigoN" id="validationDefault0" required>
+                                    </div>
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
 
-                                    
+
                                         <label for="validationDefault01" class="form-label">Nombre</label>
                                         <select class="form-select" value="" name="proveedorN" id="proveedorN" required>
                                             <option value="" name="">...</option>
@@ -260,7 +259,7 @@
                                     </div> -->
                                     <div class="col-md-6">
                                         <label for="validationDefaul05" class="form-label">ATN</label>
-                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)"  name="atnSN" id="validationDefault00" required>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="atnSN" id="validationDefault00" required>
 
                                     </div>
                                     <!-- <div class="col-md-3">
@@ -337,7 +336,7 @@
 
                                     <div class="col-md-6">
                                         <label for="validationDefault08" class="form-label">Email</label>
-                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)"  name="emailLN" id="validationDefault07" value='<?php echo $_SESSION["correo"]; ?>' disabled>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="emailLN" id="validationDefault07" value='<?php echo $_SESSION["correo"]; ?>' disabled>
 
                                     </div>
 
@@ -391,7 +390,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault05" class="form-label">Lead Time/ Plazo de entrega</label>
-                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)"  name="plazoentregaN" id="validationDefault11" required>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="plazoentregaN" id="validationDefault11" required>
 
                                     </div>
 
@@ -2723,7 +2722,7 @@
                         <textarea class="form-control" rows="4" cols="4" id="comentarioenespera" name="comentarioenespera"></textarea>
                     </div>
 
-                    
+
                     <br><br>
                 </div>
 
@@ -2765,7 +2764,7 @@
             <?php
 
             $actualizarSolicitarAR = new SolicitudC();
-             $actualizarSolicitarAR->ActualizarDSolicitudC();
+            $actualizarSolicitarAR->ActualizarDSolicitudC();
 
             ?>
 

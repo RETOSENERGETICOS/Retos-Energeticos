@@ -84,7 +84,7 @@ class SolicitudM extends ConexionBD
         } else {
 
 
-            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1  AND firma_superv = $idsuario");
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1  AND firma_superv = $idsuario AND estado= 1");
 
 
 
@@ -116,7 +116,7 @@ class SolicitudM extends ConexionBD
         } else {
 
 
-            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1  AND estado = 2 ");
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1 ");
 
 
             $pdo->execute();
@@ -147,7 +147,7 @@ class SolicitudM extends ConexionBD
         } else {
 
 
-            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1  AND estado = 5 ");
+            $pdo = ConexionBD::cBD()->prepare("SELECT * FROM $tablaBD WHERE status = 1");
 
 
             $pdo->execute();
@@ -225,7 +225,7 @@ class SolicitudM extends ConexionBD
         :proyecto_soli,:seguro_inclu,:oferta_suminis,:condicion_especial,:ref_suministrador,
         :descripcion,:cantidad,:precio_unitario,:tasa,:total,:subtotal_soli,:taxes,
         :pago_envio_soli,:otros_soli,:total_soli,:moneda,:cuadro_msoli,:ofertaprove_soli,
-        :especificacion_tecsoli,1,1, 5,2,$idsuario)");
+        :especificacion_tecsoli,1,1, 1,2,$idsuario)");
 
         $pdo->bindParam(":id_provedor", $datosC["id_provedor"], PDO::PARAM_INT);
         $pdo->bindParam(":codigo", $datosC["codigo"], PDO::PARAM_STR);
@@ -275,7 +275,7 @@ class SolicitudM extends ConexionBD
         $pdo = null;
     }
 
-    /* -------------------------------------------------------------------------- */
+    /* ---------------------------------VerSolicitudDM----------------------------------------- */
     /*                        insert de datos de orden de compra director          */
     /* -------------------------------------------------------------------------- */
 

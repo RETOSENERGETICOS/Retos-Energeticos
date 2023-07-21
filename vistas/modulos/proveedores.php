@@ -111,7 +111,7 @@
                                     <tr>
                                         <td>' . $value["nombre_prov"] . '</td>
                                         <td>' . $value["rfc"] . '</td>
-                                        <td>' . $value["direccion"] . ' ?></td>
+                                        <td>' . $value["direccion"] . '</td>
                                         <td>' . $value["telefono"] . '</td>
                                         <td>' . $value["atn"] . '</td>
                                         <td>' . $value["email"] . '</td>

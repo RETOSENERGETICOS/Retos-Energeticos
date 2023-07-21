@@ -111,9 +111,9 @@
                                 /* -------------------------------------------------------------------------- */
                                 $codigo = 870;
 
-                                $codf= $codigo.'_'. $ultimosDosDigitos;
+                                $codf = $codigo . '_' . $ultimosDosDigitos;
                                 foreach ($verS as $key => $value) {
-                                    $codigo+=1; 
+                                    $codigo += 1;
                                     echo '
                                     </tr>';
                                 ?>
@@ -142,14 +142,14 @@
                                             <div class="btn-group">
                                                 <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="fadeIn animated bx bx-edit-alt"></i></button>                                                
                                                 <button class="btn btn-danger BorrarMA" MAid="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>
-                                                <button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="'.$value['id'].'" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>                                            
-                                                <button style="background-color:#85929E;" class="btn btn-secondary btnImprimirFactura" idSolicitudFac="'.$value['id'].'" title="Orden de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>
+                                                <button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="' . $value['id'] . '" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>                                            
+                                                <button style="background-color:#85929E;" class="btn btn-secondary btnImprimirFactura" idSolicitudFac="' . $value['id'] . '" title="Orden de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>
                                                     </div>
                                             </div>';
 
                                             ?>
                                         </td>
-                                        <td><?php echo $value["codigo"] ?></td>    
+                                        <td><?php echo $value["codigo"] ?></td>
                                         <td><?php echo $value["fecha"] ?></td>
                                         <td><?php echo $value["solicitante_lentrega"] ?></td>
                                         <td><?php echo $value["nombre_prov"] ?></td>
@@ -194,21 +194,24 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Solicitud de compra</h5>
+
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 1%"></button>
             </div>
-            <div class="modal-header">
-                <label style="margin-left: 86%; font-weight:bold; " for="validationDefault01" class="form-label">PO#:</label>
-                <input style="width: 10%; margin-right:1%;" type="text" class="form-control" value="" name="codigoN" id="codigoN" require>
-            </div>
+
             <div class="row" style="background-color:#fff;">
                 <div class="col-xl-7 mx-auto">
 
                     <hr />
+
                     <div class="card">
+
                         <div class="card-body">
                             <div class="p-4 border rounded">
                                 <form id="solicitante" class="row g-3 needs-validation " method="post" enctype="multipart/form-data">
-                                  
+                                    <div class="modal-header">
+                                        <label for="validationDefault01" class="form-label">PO#:</label>
+                                        <input style="width: 18%; margin-right: 77%;" type="text" class="form-control" value="" name="codigoN" id="validationDefault0" required>
+                                    </div>
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
                                         <label for="validationDefault01" class="form-label">Nombre</label>
@@ -217,10 +220,10 @@
                                         $fecha = date('Y-m-d H:i:s');
                                         $anio = date('Y', strtotime($fecha));
                                         $ultimosDosDigitos = substr($anio, -2);
-                                        $codigo+=1;
-                                       
+                                        $codigo += 1;
+
                                         ?>
-                                        
+
                                         <select class="form-select" value="" name="proveedorN" id="proveedorN" required>
                                             <option value="" name="" id="proveedorN">...</option>
                                             <?php
@@ -241,7 +244,7 @@
 
                                     <div class="col-md-6">
                                         <label for="validationDefaul05" class="form-label">ATN</label>
-                                        <input type="text" class="form-control"  oninput="convertirAMayusculas()" name="atnSN" id="validationDefault0" oninput="convertirAMayusculas(this)" required>
+                                        <input type="text" class="form-control" name="atnSN" id="validationDefault0" oninput="convertirAMayusculas(this)" required>
 
                                     </div>
 
@@ -258,9 +261,13 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="p-4 border rounded">
+                                <div class="modal-header">
+                                    <br> <br>
+                                    <input type="hidden" style="width: 18%; margin-right: 80%;" type="text" class="form-control" value="" name="codigooN" id="validationDefault0" required>
+                                </div>
+                                <br>
                                 <div class="row g-3 needs-validation" novalidate>
-                                    <!-- style="background-color: #1b4e88;color: #fff;
-                                            padding-bottom: 4%; text-align:center;" -->
+
                                     <h6 class="mb-0 text-uppercase">SHIP TO /LUGAR DE ENTREGA</h6>
                                     <div class="col-md-4">
                                         <label for="validationDefault01" class="form-label">Lugar/entrega</label>
@@ -314,7 +321,7 @@
 
                                     <div class="col-md-6">
                                         <label for="validationDefault08" class="form-label">Email</label>
-                                        <input type="text" class="form-control"  oninput="convertirAMayusculas(this)" name="emailLN" id="validationDefault08" value='<?php echo $_SESSION["correo"]; ?>' disabled>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="emailLN" id="validationDefault08" value='<?php echo $_SESSION["correo"]; ?>' disabled>
 
                                     </div>
 
@@ -409,7 +416,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <label for="validationDefault08" class="form-label">Insurance included/ Seguro incluido</label>
-                                        <select  class="form-select" name="seguroincluN" id="validationDefault08" required>
+                                        <select class="form-select" name="seguroincluN" id="validationDefault08" required>
                                             <option selected disabled value="">...</option>
                                             <option>Sí</option>
                                             <option>No</option>
@@ -424,7 +431,7 @@
                                     </div>
                                     <div class="col-md-2">
                                         <label for="validationDefault10" class="form-label"> Condiciones Especiales</label>
-                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)"  name="condicionesespN" id="validationDefault10" required>
+                                        <input type="text" class="form-control" oninput="convertirAMayusculas(this)" name="condicionesespN" id="validationDefault10" required>
 
                                     </div>
 
@@ -1051,7 +1058,7 @@
                                                     <td>
                                                         <div class="col-md-12">
 
-                                                            <textarea class="form-control" rows="1"  oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
+                                                            <textarea class="form-control" rows="1" oninput="convertirAMayusculas(this)" cols="1" name="descripN[]"></textarea>
                                                             <!-- <input type="text" class="form-control" name="descripN[]"  > -->
 
                                                         </div>
@@ -1298,7 +1305,7 @@
                                 <div class="my-3 border-top"></div>
                                 <h6 class="mb-0">Shipping: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="shippinglN" id="shippinglN" oninput="calcularS()" value="" required></span></h5>
                                     <div class="my-3 border-top"></div>
-                                    <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="otrosN"  id="otrosN" oninput="calcularS()" value="" required></span></h5>
+                                    <h6 class="mb-0">Otros: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="otrosN" id="otrosN" oninput="calcularS()" value="" required></span></h5>
                                         <div class="my-3 border-top"></div>
                                         <h6 class="mb-0">Total: <span class="float-end"><input type="text" class="form-control" style="position: relative; margin-top: -5%" name="totalN" id="totalN" oninput="calcularS()" required></span></h5>
 
@@ -2693,7 +2700,7 @@
 
             <div class="card radius-10">
                 <div class="card-body">
-                <div class="col-12" id="inputContainer" style="display: none;">
+                    <div class="col-12" id="inputContainer" style="display: none;">
                         <label class="form-label">Comentarios</label>
                         <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazo"></textarea>
                     </div>
@@ -2704,7 +2711,7 @@
                     </div>
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-xl-4 row-cols-xxl-3 g-3">
 
-                    <br><br>
+                        <br><br>
                         <div class="col-12">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" id="aprobarCheckbox" name="comentarioenaceptar" value="1">
@@ -2714,10 +2721,10 @@
                                 <input class="form-check-input" type="checkbox" id="rechazarCheckbox" name="comentarioRechazo" value="2">
                                 <label class="form-check-label" for="rechazarCheckbox">Rechazar solicitud</label>
                             </div>
-                           
+
                         </div>
-                        
-                       
+
+
 
                     </div><!--end row-->
 
@@ -2728,13 +2735,13 @@
             <div class="col-12" id="inputContainer" style="display: none;">
                 <label class="form-label">Comentarios</label>
                 <textarea class="form-control" rows="4" cols="4" id="comentarioRechazo" name="comentarioRechazos"></textarea>
-                
+
             </div>
 
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
 
 
-            <input  type="hidden" class="form-control" rows="4" cols="4" id="aceptar " name="aceptar"></input>
+                <input type="hidden" class="form-control" rows="4" cols="4" id="aceptar " name="aceptar"></input>
                 <button id="Brechazar" value="R" name="comentarioR" class="btn btn-danger btn-md btn-block " style="display: none;" type="submit">Rechazar solicitud</button>
 
                 <button id="Baprobar" value="ace" name="comentarioenace" class="btn btn-primary btn-md btn-block" style="display: none;" type="submit">Aprobar solicitud</button>
@@ -2760,4 +2767,3 @@
 $borrarS = new SolicitudC();
 $borrarS->EliminarSolicitudCMA();
 ?>
-

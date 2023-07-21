@@ -86,15 +86,15 @@
 
                                 $item = null;
                                 $valor = null;
-                                $verS = SolicitudC::VistaSolicitudFAC($item, $valor);
+                                $verS = SolicitudC::VerSolicitudC($item, $valor);
                                 ?>
                                 <?php
                                 date_default_timezone_set('America/Mexico_City');
                                 $fecha = date('Y-m-d H:i:s');
                                 $anio = date('Y', strtotime($fecha));
                                 $ultimosDosDigitos = substr($anio, -2);
-                                
-                                
+
+
                                 $codigo = 870;
 
                                 $codf = $codigo . '_' . $ultimosDosDigitos;
@@ -125,7 +125,7 @@
 
                                         <td>
                                             <div class="btn-group">
-                                                <?php echo ' <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="fadeIn animated bx bx-edit-alt"></i></button>
+                                                <?php echo ' <button class="btn btn-warning btnVistaSolicitud" data-bs-toggle="modal" data-bs-target="#solicitudCom22"  idSolicitud="' . $value["id"] . '"><i class="lni lni-eye"></i></button>
                                            <button class="btn btn-danger BorrarM" Mid="' . $value["id"] . '"><i class="fadeIn animated bx bx-trash-alt"></i></button>' ?>
                                                 <?php echo ' <button  class="btn btn-secondary btnImprimirSolicitud" idSolicitudFac="' . $value['id'] . '" title="Solicitud de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>                                            
                                                 <button style="background-color:#85929E;" class="btn btn-secondary btnImprimirFactura" idSolicitudFac="' . $value['id'] . '" title="Orden de compra PDF"><i class="bi bi-file-earmark-pdf"></i></button>' ?>
@@ -177,10 +177,7 @@
 
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 1%"></button>
             </div>
-            <div class="modal-header">
-                <label style="margin-left: 86%;" for="validationDefault01" class="form-label">PO#:</label>
-                <input style="width: 10%; margin-right:1%;" type="text" class="form-control" value="" name="codigoN" id="validationDefault0" required>
-            </div>
+
             <div class="row" style="background-color:#fff;">
                 <div class="col-xl-7 mx-auto">
 
@@ -191,7 +188,10 @@
                         <div class="card-body">
                             <div class="p-4 border rounded">
                                 <form id="solicitante" class="row g-3 needs-validation " method="post" enctype="multipart/form-data">
-
+                                    <div class="modal-header">
+                                        <label for="validationDefault01" class="form-label">PO#:</label>
+                                        <input style="width: 18%; margin-right: 77%;" type="text" class="form-control" value="" name="codigoN" id="validationDefault0" required>
+                                    </div>
                                     <h6 class="mb-0 text-uppercase">VENDOR / SUMINISTRADOR</h6>
                                     <div class="col-md-6">
                                         <label for="validationDefault01" class="form-label">Nombre</label>
@@ -241,9 +241,13 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="p-4 border rounded">
+                                <div class="modal-header">
+                                    <br> <br>
+                                    <input type="hidden" style="width: 18%; margin-right: 80%;" type="text" class="form-control" value="" name="codigooN" id="validationDefault0" required>
+                                </div>
+                                <br>
                                 <div class="row g-3 needs-validation" novalidate>
-                                    <!-- style="background-color: #1b4e88;color: #fff;
-                                            padding-bottom: 4%; text-align:center;" -->
+
                                     <h6 class="mb-0 text-uppercase">SHIP TO /LUGAR DE ENTREGA</h6>
                                     <div class="col-md-4">
                                         <label for="validationDefault01" class="form-label">Lugar/entrega</label>

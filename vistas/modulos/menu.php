@@ -86,7 +86,7 @@
                   || $_SESSION["rol"] == "Compras"  
                 ) {
                   echo'
-                  <li> <a href="solicitud-compras">
+                  <li> <a href="solicitud-compraCO">
                   <i class="fadeIn animated bx bx-receipt"></i>&nbsp Solicitud de compra
                     </a>
                   </li>

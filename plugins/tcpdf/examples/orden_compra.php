@@ -39,9 +39,10 @@ class imprimirFactura
 
         // create new PDF document
         $pdf = new TCPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        // $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
         $pdf->setHeaderMargin(PDF_MARGIN_HEADER);
         $pdf->setFooterMargin(PDF_MARGIN_FOOTER);
-    
+
 
         // set auto page breaks
         $pdf->setAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
@@ -316,109 +317,143 @@ EOF;
         $to16 = $respuestaFacRef[15];
 
 
-        $contenido .= <<<EOF
-    <tr style="border:1px solid black;">
-    <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">1</td>
-    <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r}</td>
-    <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d}</td>
-    <td style="text-align:center; font-size:8px; width:48px;border:1px solid black;">{$c}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$p}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$t}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$to}</td>
-    
-    </tr>
+        if (!empty($r) && !empty($d) && !empty($c) && !empty($p) && !empty($t) && !empty($to)) {
+            $contenido .= <<<EOF
+        <tr style="border:1px solid black;">
+        <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">1</td>
+        <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r}</td>
+        <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d}</td>
+        <td style="text-align:center; font-size:8px; width:48px;border:1px solid black;">{$c}</td>
+        <td style="text-align:center; font-size:8px; border:1px solid black;">{$p}</td>
+        <td style="text-align:center; font-size:8px; border:1px solid black;">{$t}</td>
+        <td style="text-align:center; font-size:8px; border:1px solid black;">{$to}</td>
+        </tr>
+        EOF;
+        }
+        if (!empty($r2) && !empty($d2) && !empty($c2) && !empty($p2) && !empty($t2) && !empty($to2)) {
+            $contenido .= <<<EOF
+            <tr style="border:1px solid black;">
+            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">2</td>
+            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r2}</td>
+            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d2}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c2}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p2}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t2}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to2}</td>
+            </tr>
+            EOF;
+        }
+        if (!empty($r3) && !empty($d3) && !empty($c3) && !empty($p3) && !empty($t3) && !empty($to3)) {
+            $contenido .= <<<EOF
+            <tr style="border:1px solid black;">
+            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">3</td>
+            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r3}</td>
+            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d3}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c3}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p3}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t3}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to3}</td>
+            </tr>
+            EOF;
+        }
 
-    <tr style="border:1px solid black;">
-    <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">2</td>
-    <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r2}</td>
-    <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d2}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$c2}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$p2}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$t2}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$to2}</td>
-    </tr>
 
-    <tr style="border:1px solid black;">
-    <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">3</td>
-    <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r3}</td>
-    <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d3}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$c3}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$p3}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$t3}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$to3}</td>
-    </tr>
+        if (!empty($r4) && !empty($d4) && !empty($c4) && !empty($p4) && !empty($t4) && !empty($to4)) {
+            $contenido .= <<<EOF
+            <tr style="border:1px solid black;">
+            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">4</td>
+            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r4}</td>
+            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d4}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c4}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p4}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t4}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to4}</td>
+            </tr>
+            EOF;
+        }
 
-    <tr style="border:1px solid black;">
-    <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">4</td>
-    <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r4}</td>
-    <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d4}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$c4}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$p4}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$t4}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$to4}</td>
-    </tr>
+        if (!empty($r5) && !empty($d5) && !empty($c5) && !empty($p5) && !empty($t5) && !empty($to5)) {
+            $contenido .= <<<EOF
+            <tr style="border:1px solid black;">
+            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">5</td>
+            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r5}</td>
+            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d5}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c5}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p5}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t5}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to5}</td>
+            </tr>
+            EOF;
+        }
 
-    <tr style="border:1px solid black;">
-    <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">5</td>
-    <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r5}</td>
-    <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d5}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$c5}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$p5}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$t5}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$to5}</td>
-    </tr>
+        if (!empty($r6) && !empty($d6) && !empty($c6) && !empty($p6) && !empty($t6) && !empty($to6)) {
+            $contenido .= <<<EOF
+            <tr style="border:1px solid black;">
+            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">6</td>
+            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r6}</td>
+            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d6}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c6}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p6}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t6}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to6}</td>
+            </tr>
+            EOF;
+        }
 
-    <tr style="border:1px solid black;">
-    <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">6</td>
-    <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r6}</td>
-    <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d6}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$c6}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$p6}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$t6}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$to6}</td>
-    </tr>
+        if (!empty($r7) && !empty($d7) && !empty($c7) && !empty($p7) && !empty($t7) && !empty($to7)) {
+            $contenido .= <<<EOF
+            <tr style="border:1px solid black;">
+            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">7</td>
+            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r7}</td>
+            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d7}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c7}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p7}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t7}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to7}</td>
+            </tr>
+            EOF;
+        }
 
-    <tr style="border:1px solid black;">
-    <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">7</td>
-    <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r7}</td>
-    <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d7}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$c7}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$p7}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$t7}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$to7}</td>
-    </tr>
+        if (!empty($r8) && !empty($d8) && !empty($c8) && !empty($p8) && !empty($t8) && !empty($to8)) {
+            $contenido .= <<<EOF
+            <tr style="border:1px solid black;">
+            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">8</td>
+            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r8}</td>
+            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d8}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c8}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p8}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t8}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to8}</td>
+            </tr>
+            EOF;
+        }    
 
-    <tr style="border:1px solid black;">
-    <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">8</td>
-    <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r8}</td>
-    <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d8}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$c8}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$p8}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$t8}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$to8}</td>
-    </tr>
-
-    <tr style="border:1px solid black;">
-    <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">9</td>
-    <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r9}</td>
-    <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d9}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$c9}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$p9}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$t9}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$to9}</td>
-    </tr>
-
-    <tr style="border:1px solid black;">
-    <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">10</td>
-    <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r10}</td>
-    <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d10}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$c10}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$p10}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$t10}</td>
-    <td style="text-align:center; font-size:8px; border:1px solid black;">{$to10}</td>
-    </tr>
-
-EOF;
+        if (!empty($r9) && !empty($d9) && !empty($c9) && !empty($p9) && !empty($t9) && !empty($to9)) {
+            $contenido .= <<<EOF
+            <tr style="border:1px solid black;">
+            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">9</td>
+            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r9}</td>
+            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d9}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c9}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p9}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t9}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to9}</td>
+            </tr>
+            EOF;
+        }    
+        if (!empty($r10) && !empty($d10) && !empty($c10) && !empty($p10) && !empty($t10) && !empty($to10)) {
+            $contenido .= <<<EOF
+            <tr style="border:1px solid black;">
+            <td style="text-align:center; font-size:8px; width:16px; height:15px; border:1px solid black;">10</td>
+            <td style="text-align:center; font-size:8px; height:15px; border:1px solid black;">{$r10}</td>
+            <td style="text-align:center; font-size:8px; width:164px; border:1px solid black;">{$d10}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$c10}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$p10}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$t10}</td>
+            <td style="text-align:center; font-size:8px; border:1px solid black;">{$to10}</td>
+            </tr>
+            EOF;
+        }
 
 
         $contenido .= <<<EOF
@@ -535,8 +570,8 @@ EOF;
 
         // Agrega una nueva página al documento
         $pdf->AddPage();
-        
-        
+
+
         // Establecer estilos de tabla
         $style = array(
             'border' => true,
@@ -545,8 +580,8 @@ EOF;
             'cellMargin' => 0, // Margen externo de celda
         );
 
-        
-        
+
+
         $pdf->SetFont('helvetica', 'B', 12);
         // Definir contenido de la tabla
         $html = <<<EOF
@@ -556,7 +591,7 @@ EOF;
                     <td rowspan="4" style="width: 33%; height: 82px; align-items:center;">
                         <img style="width:160px; display: block; margin-left: auto; margin-right: auto;" src="images/Retos_2.png">
                     </td>
-                    <td rowspan="3" style="width: 33%; height: 54px; text-align:center;">POLITICA</td>
+                    <td rowspan="3" style="width: 33%; height: 54px; text-align:center;font-weight:bold;">POLITICA</td>
                     <td style="width: 33%; height: 18px;">Código: SPM7.101.B.1</td>
                 </tr>
                 <tr style="height: 18px;">
@@ -566,7 +601,7 @@ EOF;
                     <td style="width: 33%; height: 18px;">Fecha: $fecha  </td>
                 </tr>
                 <tr style="height: 18px;">
-                    <td style="width: 33%; height: 18px; text-align:center;">CONDICIONES GENERALES DE 
+                    <td style="width: 33%; height: 18px; text-align:center;font-weight:bold;">CONDICIONES GENERALES DE 
                     COMPRA</td>
                     <td style="width: 33%; height: 18px;">Pagina:  </td>
                 </tr>
@@ -575,9 +610,9 @@ EOF;
         
         <br><br><br>
         EOF;
-        
+
         $content = '
-        <h3>1. INTRODUCCION</h3>
+        <h3 style="color: #1B4F72;">1. INTRODUCCION</h3>
         <p style="text-align: justify; margin-bottom:20px; color:black;">El presente documento define las condiciones generales de compra de las empresas Retos 
         Energéticos Servicios, SA de CV, Energy Challenges LLC, Egoa Energia SL y Energy 
         Challenges Inc. Independientemente del nombre particular señalado en el presente documento. 
@@ -585,7 +620,7 @@ EOF;
         como "EMPRESA COMPRADORA" de manera indistinta.</p>
         <br><br><br>
         
-        <h3>2. GENERALIDADES</h3>
+        <h3 style="color: #1B4F72;">2. GENERALIDADES</h3>
         <p style="text-align: justify; color:black;">La aceptación de la presente orden de compra obliga al vendedor a ceñirse a estas 
         condiciones generales y a las particulares del mismo. En el caso de discrepancias entre 
         ambas, predomina lo indicado en las condiciones particulares señaladas en la orden de 
@@ -593,7 +628,7 @@ EOF;
         de no mediar aceptación escrita por parte de la EMPRESA COMPRADORA firmada por un 
         apoderado debidamente autorizado para ello.</p>
         
-        <h3>3. PLAZO DE ENTREGA</h3>
+        <h3 style="color: #1B4F72;">3. PLAZO DE ENTREGA</h3>
         <p style="text-align: justify; color:black; ">Los plazos de entrega señalados en nuestra orden de compra se entienden para 
         mercancías depositadas en el lugar convenido de acuerdo con la orden de compra. La
         EMPRESA COMPRADORA se reserva el derecho de rechazar toda aquella mercancía que 
@@ -602,22 +637,22 @@ EOF;
         compra, cantidad, referencia de la EMPRESA COMPRADORA y descripción, línea de la 
         orden de compra o posición a la que corresponde la entrega, fecha, observaciones si las
         hubiera y cualquier otra documentación referida en la orden de compra.</p>';
-        
-        
-        
-        
+
+
+
+
         $pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
-        
+
         // Agregar el contenido HTML al PDF
         $pdf->SetFont('helvetica', '', 14);
         $pdf->writeHTML($content, true, false, true, false, '');
-        
-        
-        
+
+
+
         // Agrega una nueva página al documento
         $pdf->AddPage();
-        
-        
+
+
         // Establecer estilos de tabla
         $style = array(
             'border' => true,
@@ -634,7 +669,7 @@ EOF;
                     <td rowspan="4" style="width: 33%; height: 82px; align-items:center;">
                         <img style="width:160px; display: block; margin-left: auto; margin-right: auto;" src="images/Retos_2.png">
                     </td>
-                    <td rowspan="3" style="width: 33%; height: 54px; text-align:center;">POLITICA</td>
+                    <td rowspan="3" style="width: 33%; height: 54px; text-align:center;font-weight:bold;">POLITICA</td>
                     <td style="width: 33%; height: 18px;">Código: SPM7.101.B.1</td>
                 </tr>
                 <tr style="height: 18px;">
@@ -644,9 +679,9 @@ EOF;
                     <td style="width: 33%; height: 18px;">Fecha: 22/06/2023  </td>
                 </tr>
                 <tr style="height: 18px;">
-                    <td style="width: 33%; height: 18px; text-align:center;">CONDICIONES GENERALES DE 
+                    <td style="width: 33%; height: 18px; text-align:center;font-weight:bold;">CONDICIONES GENERALES DE 
                     COMPRA</td>
-                    <td style="width: 33%; height: 18px;">Fila 3, Columna 1</td>
+                    <td style="width: 33%; height: 18px;"></td>
                 </tr>
             </tbody>
         </table>
@@ -654,13 +689,13 @@ EOF;
         <br><br><br>
         ';
         $content = '
-<h3>4. PENALIDADES</h3>
+<h3 style="color: #1B4F72;">4. PENALIDADES</h3>
 <p style="text-align: justify; color:black;">En caso de demora de la fecha de entrega concertada, el suministrador abonará a la 
 EMPRESA COMPRADORA una indemnización, por importe del 1% del valor total de la 
 orden de compra, por cada semana completa de retraso, hasta un máximo del 10% del valor 
 total de esta.</p>
 
-<h3>5. TRANSPORTE Y EMBALAJES</h3>
+<h3 style="color: #1B4F72;">5. TRANSPORTE Y EMBALAJES</h3>
 <p style="text-align: justify; color:black;">El transporte se efectuará por cuenta del suministrador hasta el lugar de entrega acordado 
 en la orden de compra, entendiéndose que las mercancías viajan por cuenta y riesgo del
 suministrador hasta el punto acordado. Los materiales se suministrarán con el embalaje
@@ -677,7 +712,7 @@ de compra). La transferencia del riesgo se produce en el momento en que el Produ
 aceptado formalmente por la EMPRESA COMPRADORA salvo pacto en contrario, no están 
 permitidas las expediciones parciales.</p>
 
-<h3>6. FACTURACIÓN Y PAGOS</h3>
+<h3 style="color: #1B4F72;">6. FACTURACIÓN Y PAGOS</h3>
 <p style="text-align: justify; color:black;">Deberán formularse una factura por cada orden de compra, haciendo figurar en la misma el 
 número de la correspondiente orden de compra. Las facturas deberán obrar en nuestro 
 poder en un plazo máximo de 5 días después de la fecha que se indique en la factura.
@@ -688,33 +723,33 @@ de pago a partir de que se recibe la nueva factura conforme. En cualquier caso, 
 
 
 
-$pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
+        $pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
 
-// Agregar el contenido HTML al PDF
-$pdf->SetFont('helvetica', '', 14);
-$pdf->writeHTML($content, true, false, true, false, '');
-
-
-$pdf->AddPage();
+        // Agregar el contenido HTML al PDF
+        $pdf->SetFont('helvetica', '', 14);
+        $pdf->writeHTML($content, true, false, true, false, '');
 
 
-// Establecer estilos de tabla
-$style = array(
-    'border' => true,
-    'borderColor' => array(0, 0, 0), // Color del borde: negro
-    'cellPadding' => 2, // Espaciado interno de celda
-    'cellMargin' => 0, // Margen externo de celda
-);
-$pdf->SetFont('helvetica', 'B', 12);
-// Definir contenido de la tabla
-$html = '
+        $pdf->AddPage();
+
+
+        // Establecer estilos de tabla
+        $style = array(
+            'border' => true,
+            'borderColor' => array(0, 0, 0), // Color del borde: negro
+            'cellPadding' => 2, // Espaciado interno de celda
+            'cellMargin' => 0, // Margen externo de celda
+        );
+        $pdf->SetFont('helvetica', 'B', 12);
+        // Definir contenido de la tabla
+        $html = '
 <table border="1" style="width: 100%; height: 72px;">
     <tbody>
         <tr style="height: 18px;">
             <td rowspan="4" style="width: 33%; height: 82px; align-items:center;">
                 <img style="width:160px; display: block; margin-left: auto; margin-right: auto;" src="images/Retos_2.png">
             </td>
-            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;">POLITICA</td>
+            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;font-weight:bold;">POLITICA</td>
             <td style="width: 33%; height: 18px;">Código: SPM7.101.B.1</td>
         </tr>
         <tr style="height: 18px;">
@@ -724,9 +759,9 @@ $html = '
             <td style="width: 33%; height: 18px;">Fecha: 22/06/2023  </td>
         </tr>
         <tr style="height: 18px;">
-            <td style="width: 33%; height: 18px; text-align:center;">CONDICIONES GENERALES DE 
+            <td style="width: 33%; height: 18px; text-align:center;font-weight:bold;">CONDICIONES GENERALES DE 
             COMPRA</td>
-            <td style="width: 33%; height: 18px;">Fila 3, Columna 1</td>
+            <td style="width: 33%; height: 18px;"></td>
         </tr>
     </tbody>
 </table>
@@ -734,7 +769,7 @@ $html = '
 <br><br><br>
 ';
 
-$content = '
+        $content = '
 
 <p style="text-align: justify; color:black;">
 aceptarán facturas, y por tanto no se ejecutarán pagos en aquellos casos donde por causas 
@@ -747,7 +782,7 @@ día de cada quincena. No se admitirán facturaciones parciales, salvo que se in
 contrario y sea aceptado de manera escrita por la EMPRESA COMPRADORA. Las facturas 
 reunirán todos los requisitos establecidos legalmente.</p>
 
-<h3>7. EJECUCIÓN</h3>
+<h3 style="color: #1B4F72;">7. EJECUCIÓN</h3>
 <p style="text-align: justify; color:black;">En aquellos casos en que las órdenes de compra emitidas por la EMPRESA 
 COMPRADORA se refieran a obras o equipos cuya ejecución deba hacerse según planos 
 facilitados por la EMPRESA COMPRADORA, el suministrador se ceñirá a las indicaciones
@@ -760,7 +795,7 @@ comunicarlo inmediatamente a la EMPRESA COMPRADORA por escrito con el fin
 de poder adoptar las medidas pertinentes al caso. De ninguna manera deberá el 
 suministrador realizar cambios de forma unilateral.</p>
 
-<h3>8. INSPECCIONES</h3>
+<h3 style="color: #1B4F72;">8. INSPECCIONES</h3>
 <p style="text-align: justify; color:black;">El suministrador se compromete, durante el período de fabricación, a facilitar libre acceso a 
 sus talleres o instalaciones tanto a la EMPRESA COMPRADORA como a sus inspectores, 
 clientes o sus delegados, con el fin de poder inspeccionar en las instalaciones del 
@@ -772,33 +807,33 @@ facilidades y asistencia para facilitar su trabajo.</p>
 
 
 
-$pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
+        $pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
 
-// Agregar el contenido HTML al PDF
-$pdf->SetFont('helvetica', '', 14);
-$pdf->writeHTML($content, true, false, true, false, '');
-
-
-$pdf->AddPage();
+        // Agregar el contenido HTML al PDF
+        $pdf->SetFont('helvetica', '', 14);
+        $pdf->writeHTML($content, true, false, true, false, '');
 
 
-// Establecer estilos de tabla
-$style = array(
-    'border' => true,
-    'borderColor' => array(0, 0, 0), // Color del borde: negro
-    'cellPadding' => 2, // Espaciado interno de celda
-    'cellMargin' => 0, // Margen externo de celda
-);
-$pdf->SetFont('helvetica', 'B', 12);
-// Definir contenido de la tabla
-$html = '
+        $pdf->AddPage();
+
+
+        // Establecer estilos de tabla
+        $style = array(
+            'border' => true,
+            'borderColor' => array(0, 0, 0), // Color del borde: negro
+            'cellPadding' => 2, // Espaciado interno de celda
+            'cellMargin' => 0, // Margen externo de celda
+        );
+        $pdf->SetFont('helvetica', 'B', 12);
+        // Definir contenido de la tabla
+        $html = '
 <table border="1" style="width: 100%; height: 72px;">
     <tbody>
         <tr style="height: 18px;">
             <td rowspan="4" style="width: 33%; height: 82px; align-items:center;">
                 <img style="width:160px; display: block; margin-left: auto; margin-right: auto;" src="images/Retos_2.png">
             </td>
-            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;">POLITICA</td>
+            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;font-weight:bold;">POLITICA</td>
             <td style="width: 33%; height: 18px;">Código: SPM7.101.B.1</td>
         </tr>
         <tr style="height: 18px;">
@@ -808,9 +843,9 @@ $html = '
             <td style="width: 33%; height: 18px;">Fecha: 22/06/2023  </td>
         </tr>
         <tr style="height: 18px;">
-            <td style="width: 33%; height: 18px; text-align:center;">CONDICIONES GENERALES DE 
+            <td style="width: 33%; height: 18px; text-align:center; font-weight:bold;">CONDICIONES GENERALES DE 
             COMPRA</td>
-            <td style="width: 33%; height: 18px;">Fila 3, Columna 1</td>
+            <td style="width: 33%; height: 18px;"></td>
         </tr>
     </tbody>
 </table>
@@ -818,12 +853,12 @@ $html = '
 <br><br><br>
 ';
 
-$content = '
+        $content = '
 
-<h3>La inspección no inhibirá al suministrador de la responsabilidad en cuanto a daños y 
+<h3 style="font-weight:none;">La inspección no inhibirá al suministrador de la responsabilidad en cuanto a daños y 
 deficiencias que se presenten durante el período de garantía.</h3>
 
-<h3>9. GESTIÓN DE NO CONFORMIDADES</h3>
+<h3 style="color: #1B4F72;">9. GESTIÓN DE NO CONFORMIDADES</h3>
 <p style="text-align: justify; color:black;">En caso de que se detecte un incumplimiento por parte del suministrador, se emite una No 
 Conformidad con el fin de poder controlar y corregir dicha desviación, así como el 
 establecimiento de acciones que garanticen que no habrá recurrencia en dicho incumplimiento.</p>
@@ -836,10 +871,10 @@ establecimiento de acciones que garanticen que no habrá recurrencia en dicho in
   <li>Entregue la evidencia de las acciones al responsable de QSE, para que valide la eficacia de estas, y proceda a su cierre, o solicite cambios/nuevas acciones.</li>
 </ul>
 
-<h3>10. INFORMES SOBRE EL PROGRESO</h3>
+<h3 style="color: #1B4F72;">10. INFORMES SOBRE EL PROGRESO</h3>
 <p style="text-align: justify; color:black;">El suministrador se compromete a remitir a la EMPRESA COMPRADORA informes periódicos detallando e indicando el progreso de la fabricación a él encomendada, según acuerdo mutuo establecido entre ambos en cada caso particular.</p>
 
-<h3>11. SUBCONTRATISTAS</h3>
+<h3 style="color: #1B4F72;">11. SUBCONTRATISTAS</h3>
 <p style="text-align: justify; color:black;">Si el contratista contrata a subcontratistas, es obligación del contratista enviar los requisitos documentales conforme se describe en este documento, así como evidencia de la relación laboral entre ambas empresas.</p>
 
 ';
@@ -847,34 +882,34 @@ establecimiento de acciones que garanticen que no habrá recurrencia en dicho in
 
 
 
-$pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
+        $pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
 
-// Agregar el contenido HTML al PDF
-$pdf->SetFont('helvetica', '', 14);
-$pdf->writeHTML($content, true, false, true, false, '');
-
-
-
-$pdf->AddPage();
+        // Agregar el contenido HTML al PDF
+        $pdf->SetFont('helvetica', '', 14);
+        $pdf->writeHTML($content, true, false, true, false, '');
 
 
-// Establecer estilos de tabla
-$style = array(
-    'border' => true,
-    'borderColor' => array(0, 0, 0), // Color del borde: negro
-    'cellPadding' => 2, // Espaciado interno de celda
-    'cellMargin' => 0, // Margen externo de celda
-);
-$pdf->SetFont('helvetica', 'B', 12);
-// Definir contenido de la tabla
-$html = '
+
+        $pdf->AddPage();
+
+
+        // Establecer estilos de tabla
+        $style = array(
+            'border' => true,
+            'borderColor' => array(0, 0, 0), // Color del borde: negro
+            'cellPadding' => 2, // Espaciado interno de celda
+            'cellMargin' => 0, // Margen externo de celda
+        );
+        $pdf->SetFont('helvetica', 'B', 12);
+        // Definir contenido de la tabla
+        $html = '
 <table border="1" style="width: 100%; height: 72px;">
     <tbody>
         <tr style="height: 18px;">
             <td rowspan="4" style="width: 33%; height: 82px; align-items:center;">
                 <img style="width:160px; display: block; margin-left: auto; margin-right: auto;" src="images/Retos_2.png">
             </td>
-            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;">POLITICA</td>
+            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;font-weight:bold;">POLITICA</td>
             <td style="width: 33%; height: 18px;">Código: SPM7.101.B.1</td>
         </tr>
         <tr style="height: 18px;">
@@ -884,9 +919,9 @@ $html = '
             <td style="width: 33%; height: 18px;">Fecha: 22/06/2023  </td>
         </tr>
         <tr style="height: 18px;">
-            <td style="width: 33%; height: 18px; text-align:center;">CONDICIONES GENERALES DE 
+            <td style="width: 33%; height: 18px; text-align:center;font-weight:bold;">CONDICIONES GENERALES DE 
             COMPRA</td>
-            <td style="width: 33%; height: 18px;">Fila 3, Columna 1</td>
+            <td style="width: 33%; height: 18px;"></td>
         </tr>
     </tbody>
 </table>
@@ -894,14 +929,14 @@ $html = '
 <br><br><br>
 ';
 
-$content = '
+        $content = '
 
 
-<h3>12. GARANTÍAS</h3>
+<h3 style="color: #1B4F72;">12. GARANTÍAS</h3>
 <p style="text-align: justify; color:black;">El suministrador deberá garantizar la buena ejecución y calidad de fabricación y materiales suministrados durante un período mínimo de 18 meses desde el suministro y/o 12 meses contados a partir de la puesta en servicio de la instalación completa suministrada a la EMPRESA COMPRADORA, en la cual esté incorporado dicho suministro.</p>
 <p style="text-align: justify; color:black;">Las faltas o defectos en el suministro, observado durante el citado período de garantía, deberán ser eliminados a la mayor brevedad posible por el suministrador corriendo él mismo con los gastos que ello origine, iniciándose de nuevo el plazo de garantía para el suministro, o parte de este, o repuesto utilizado en dicha corrección de falla o defecto.</p>
 
-<h3>13. PROPIEDAD</h3>
+<h3 style="color: #1B4F72;">13. PROPIEDAD</h3>
 <p style="text-align: justify; color:black;">Los proyectos, memorias, cálculos, dibujos y cuantos documentos y materiales proporcione la EMPRESA COMPRADORA, así como fotocopias o cualquier tipo de reproducción de información en cualquier medio de almacenaje físico o magnético, quedarán siempre en absoluta propiedad de la EMPRESA COMPRADORA, no pudiendo el suministrador disponer de ellos más que para la ejecución de los trabajos relacionados con la orden de compra y tampoco podrán ser entregados a otras personas o empresas sin autorización escrita por parte de la EMPRESA COMPRADORA, debiendo ser devueltos a petición de la EMPRESA COMPRADORA en un plazo máximo de 10 días tras notificación escrita.</p>
 <p style="text-align: justify; color:black;">Igualmente, quedarán en propiedad de la EMPRESA COMPRADORA los troqueles, prototipos, ensayos y modelos que el suministrador confeccione para la ejecución de la obra comprendida en las órdenes de compra emitidas por la EMPRESA COMPRADORA.</p>
 
@@ -912,34 +947,34 @@ $content = '
 
 
 
-$pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
+        $pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
 
-// Agregar el contenido HTML al PDF
-$pdf->SetFont('helvetica', '', 14);
-$pdf->writeHTML($content, true, false, true, false, '');
-
-
-
-$pdf->AddPage();
+        // Agregar el contenido HTML al PDF
+        $pdf->SetFont('helvetica', '', 14);
+        $pdf->writeHTML($content, true, false, true, false, '');
 
 
-// Establecer estilos de tabla
-$style = array(
-    'border' => true,
-    'borderColor' => array(0, 0, 0), // Color del borde: negro
-    'cellPadding' => 2, // Espaciado interno de celda
-    'cellMargin' => 0, // Margen externo de celda
-);
-$pdf->SetFont('helvetica', 'B', 12);
-// Definir contenido de la tabla
-$html = '
+
+        $pdf->AddPage();
+
+
+        // Establecer estilos de tabla
+        $style = array(
+            'border' => true,
+            'borderColor' => array(0, 0, 0), // Color del borde: negro
+            'cellPadding' => 2, // Espaciado interno de celda
+            'cellMargin' => 0, // Margen externo de celda
+        );
+        $pdf->SetFont('helvetica', 'B', 12);
+        // Definir contenido de la tabla
+        $html = '
 <table border="1" style="width: 100%; height: 72px;">
     <tbody>
         <tr style="height: 18px;">
             <td rowspan="4" style="width: 33%; height: 82px; align-items:center;">
                 <img style="width:160px; display: block; margin-left: auto; margin-right: auto;" src="images/Retos_2.png">
             </td>
-            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;">POLITICA</td>
+            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;font-weight:bold;">POLITICA</td>
             <td style="width: 33%; height: 18px;">Código: SPM7.101.B.1</td>
         </tr>
         <tr style="height: 18px;">
@@ -949,9 +984,9 @@ $html = '
             <td style="width: 33%; height: 18px;">Fecha: 22/06/2023  </td>
         </tr>
         <tr style="height: 18px;">
-            <td style="width: 33%; height: 18px; text-align:center;">CONDICIONES GENERALES DE 
+            <td style="width: 33%; height: 18px; text-align:center;font-weight:bold;">CONDICIONES GENERALES DE 
             COMPRA</td>
-            <td style="width: 33%; height: 18px;">Fila 3, Columna 1</td>
+            <td style="width: 33%; height: 18px;"></td>
         </tr>
     </tbody>
 </table>
@@ -959,10 +994,10 @@ $html = '
 <br><br><br>
 ';
 
-$content = '
+        $content = '
 
 
-<h3>14. RESOLUCIÓN DE DIFERENCIAS</h3>
+<h3 style="color: #1B4F72;">14. RESOLUCIÓN DE DIFERENCIAS</h3>
 <p style="text-align: justify; color:black;">Los gastos que se ocasionen por retraso del recibo de la documentación de envío o por la 
 no observancia de estas condiciones generales, será de cuenta del suministrador. En el 
 caso de que sugieran diferencias en la interpretación y cumplimiento de estas condiciones 
@@ -978,7 +1013,7 @@ detallan, en función de la entidad o empresa compradora:</p>
   <li>EGOA ENERGIA, SL: Ciudad de Bilbao, Bizkaia, España</li>
 </ol>
 
-<h3>15. PRECIOS</h3>
+<h3 style="color: #1B4F72;">15. PRECIOS</h3>
 <p style="text-align: justify; color:black;">Los precios reflejados en la orden de compra serán fijos, firmes y definitivos y no podrán ser
 objeto de revisión. En el precio se entienden incluidos todos los conceptos que integran o 
 pueden integrar el coste del Producto/Servicio objeto de la orden de compra, incluyendo a 
@@ -994,33 +1029,33 @@ compra, tipos de cambio, impuestos, aranceles y gravámenes de todo tipo.</p>
 
 
 
-$pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
+        $pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
 
-// Agregar el contenido HTML al PDF
-$pdf->SetFont('helvetica', '', 14);
-$pdf->writeHTML($content, true, false, true, false, '');
-
-
-$pdf->AddPage();
+        // Agregar el contenido HTML al PDF
+        $pdf->SetFont('helvetica', '', 14);
+        $pdf->writeHTML($content, true, false, true, false, '');
 
 
-// Establecer estilos de tabla
-$style = array(
-    'border' => true,
-    'borderColor' => array(0, 0, 0), // Color del borde: negro
-    'cellPadding' => 2, // Espaciado interno de celda
-    'cellMargin' => 0, // Margen externo de celda
-);
-$pdf->SetFont('helvetica', 'B', 12);
-// Definir contenido de la tabla
-$html = '
+        $pdf->AddPage();
+
+
+        // Establecer estilos de tabla
+        $style = array(
+            'border' => true,
+            'borderColor' => array(0, 0, 0), // Color del borde: negro
+            'cellPadding' => 2, // Espaciado interno de celda
+            'cellMargin' => 0, // Margen externo de celda
+        );
+        $pdf->SetFont('helvetica', 'B', 12);
+        // Definir contenido de la tabla
+        $html = '
 <table border="1" style="width: 100%; height: 72px;">
     <tbody>
         <tr style="height: 18px;">
             <td rowspan="4" style="width: 33%; height: 82px; align-items:center;">
                 <img style="width:160px; display: block; margin-left: auto; margin-right: auto;" src="images/Retos_2.png">
             </td>
-            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;">POLITICA</td>
+            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;font-weight:bold;">POLITICA</td>
             <td style="width: 33%; height: 18px;">Código: SPM7.101.B.1</td>
         </tr>
         <tr style="height: 18px;">
@@ -1030,9 +1065,9 @@ $html = '
             <td style="width: 33%; height: 18px;">Fecha: 22/06/2023  </td>
         </tr>
         <tr style="height: 18px;">
-            <td style="width: 33%; height: 18px; text-align:center;">CONDICIONES GENERALES DE 
+            <td style="width: 33%; height: 18px; text-align:center;font-weight:bold;">CONDICIONES GENERALES DE 
             COMPRA</td>
-            <td style="width: 33%; height: 18px;">Fila 3, Columna 1</td>
+            <td style="width: 33%; height: 18px;"></td>
         </tr>
     </tbody>
 </table>
@@ -1040,15 +1075,15 @@ $html = '
 <br><br><br>
 ';
 
-$content = '
+        $content = '
 
-<h3>16. CALIDAD</h3>
+<h3 style="color: #1B4F72;">16. CALIDAD</h3>
 <p style="text-align: justify; color:black;">El suministrador es responsable de la calidad de los Productos/Servicios que entrega a la 
 EMPRESA COMPRADORA, independientemente de si los fabrica o ejecuta él mismo, o los 
 adquiere a un subcontratista. Ninguna modificación técnica debe ser hecha sin 
 consentimiento previo y escrito por parte de la EMPRESA COMPRADORA.</p>
 
-<h3>17. SEGURIDAD</h3>
+<h3 style="color: #1B4F72;">17. SEGURIDAD</h3>
 <p style="text-align: justify; color:black;">El suministrador deberá cumplir todo lo dispuesto en la normativa de Seguridad e Higiene 
 en el Trabajo tanto en el país donde el suministrador desarrolla su actividad, como en el 
 país destino de las mercancías en función del Incoterm pactado y punto de entrega, en 
@@ -1063,7 +1098,7 @@ conlleva el desempeño de su trabajo y las medidas preventivas que obligatoriame
 de adoptar para evitarlos, y entregará a la EMPRESA COMPRADORA copia del escrito 
 entregado a cada trabajador firmada por ellos.</p>
 
-<h3>18. SEGUROS</h3>
+<h3 style="color: #1B4F72;">18. SEGUROS</h3>
 <p style="text-align: justify; color:black;">Cada una de las partes contratará y mantendrá los seguros necesarios conforme a la 
 legislación aplicable y a la buena práctica profesional, así como los que se requieran 
 específicamente en el Contrato.</p>
@@ -1077,34 +1112,34 @@ actividad y de sus productos y, tendrán un importe de indemnización mínima su
 ';
 
 
-$pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
+        $pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
 
-// Agregar el contenido HTML al PDF
-$pdf->SetFont('helvetica', '', 14);
-$pdf->writeHTML($content, true, false, true, false, '');
-
-
-
-$pdf->AddPage();
+        // Agregar el contenido HTML al PDF
+        $pdf->SetFont('helvetica', '', 14);
+        $pdf->writeHTML($content, true, false, true, false, '');
 
 
-// Establecer estilos de tabla
-$style = array(
-    'border' => true,
-    'borderColor' => array(0, 0, 0), // Color del borde: negro
-    'cellPadding' => 2, // Espaciado interno de celda
-    'cellMargin' => 0, // Margen externo de celda
-);
-$pdf->SetFont('helvetica', 'B', 12);
-// Definir contenido de la tabla
-$html = '
+
+        $pdf->AddPage();
+
+
+        // Establecer estilos de tabla
+        $style = array(
+            'border' => true,
+            'borderColor' => array(0, 0, 0), // Color del borde: negro
+            'cellPadding' => 2, // Espaciado interno de celda
+            'cellMargin' => 0, // Margen externo de celda
+        );
+        $pdf->SetFont('helvetica', 'B', 12);
+        // Definir contenido de la tabla
+        $html = '
 <table border="1" style="width: 100%; height: 72px;">
     <tbody>
         <tr style="height: 18px;">
             <td rowspan="4" style="width: 33%; height: 82px; align-items:center;">
                 <img style="width:160px; display: block; margin-left: auto; margin-right: auto;" src="images/Retos_2.png">
             </td>
-            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;">POLITICA</td>
+            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;font-weight:bold;">POLITICA</td>
             <td style="width: 33%; height: 18px;">Código: SPM7.101.B.1</td>
         </tr>
         <tr style="height: 18px;">
@@ -1114,9 +1149,9 @@ $html = '
             <td style="width: 33%; height: 18px;">Fecha: 22/06/2023  </td>
         </tr>
         <tr style="height: 18px;">
-            <td style="width: 33%; height: 18px; text-align:center;">CONDICIONES GENERALES DE 
+            <td style="width: 33%; height: 18px; text-align:center;font-weight:bold;">CONDICIONES GENERALES DE 
             COMPRA</td>
-            <td style="width: 33%; height: 18px;">Fila 3, Columna 1</td>
+            <td style="width: 33%; height: 18px;"></td>
         </tr>
     </tbody>
 </table>
@@ -1124,13 +1159,13 @@ $html = '
 <br><br><br>
 ';
 
-$content = '
+        $content = '
 
 <p style="text-align: justify; color:black;">A requerimiento de la EMPRESA COMPRADORA, el suministrador le proporcionará copia 
 de los justificantes de pago de las primas y copia de las pólizas contratadas, que no podrán 
 ser modificadas o canceladas hasta que finalice la ejecución de la orden de compra.</p>
 
-<h3>19. CONFIDENCIALIDAD</h3>
+<h3 style="color: #1B4F72;">19. CONFIDENCIALIDAD</h3>
 <p style="text-align: justify; color:black;">Toda la información técnica, económica o comercial relativa a la EMPRESA 
 COMPRADORA, a las sociedades del grupo de la EMPRESA COMPRADORA, a sus 
 clientes o a sus productos, que pueda llegar a conocer el suministrador como consecuencia 
@@ -1144,7 +1179,7 @@ deberá hacerse cuando sea estrictamente necesario para la consecución de los f
 Contrato, garantizando en todo caso el suministrador el cumplimiento por parte de dichos 
 empleados de la obligación de confidencialidad contenida en el párrafo anterior.</p>
 
-<h3>20. FUERZA MAYOR</h3>
+<h3 style="color: #1B4F72;">20. FUERZA MAYOR</h3>
 <p style="text-align: justify; color:black;">Se considera fuerza mayor cualquier acontecimiento imprevisto o que siendo previsible no 
 pueda evitarse y que dificulte extraordinariamente o imposibilite el cumplimiento de las
 obligaciones de cualquiera de las partes. A estos efectos, no se considerará causa de 
@@ -1159,34 +1194,34 @@ minimizar al máximo los inconvenientes que puedan surgir por dicha fuerza mayor
 ';
 
 
-$pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
+        $pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
 
-// Agregar el contenido HTML al PDF
-$pdf->SetFont('helvetica', '', 14);
-$pdf->writeHTML($content, true, false, true, false, '');
-
-
-
-$pdf->AddPage();
+        // Agregar el contenido HTML al PDF
+        $pdf->SetFont('helvetica', '', 14);
+        $pdf->writeHTML($content, true, false, true, false, '');
 
 
-// Establecer estilos de tabla
-$style = array(
-    'border' => true,
-    'borderColor' => array(0, 0, 0), // Color del borde: negro
-    'cellPadding' => 2, // Espaciado interno de celda
-    'cellMargin' => 0, // Margen externo de celda
-);
-$pdf->SetFont('helvetica', 'B', 12);
-// Definir contenido de la tabla
-$html = '
+
+        $pdf->AddPage();
+
+
+        // Establecer estilos de tabla
+        $style = array(
+            'border' => true,
+            'borderColor' => array(0, 0, 0), // Color del borde: negro
+            'cellPadding' => 2, // Espaciado interno de celda
+            'cellMargin' => 0, // Margen externo de celda
+        );
+        $pdf->SetFont('helvetica', 'B', 12);
+        // Definir contenido de la tabla
+        $html = '
 <table border="1" style="width: 100%; height: 72px;">
     <tbody>
         <tr style="height: 18px;">
             <td rowspan="4" style="width: 33%; height: 82px; align-items:center;">
                 <img style="width:160px; display: block; margin-left: auto; margin-right: auto;" src="images/Retos_2.png">
             </td>
-            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;">POLITICA</td>
+            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;font-weight:bold;">POLITICA</td>
             <td style="width: 33%; height: 18px;">Código: SPM7.101.B.1</td>
         </tr>
         <tr style="height: 18px;">
@@ -1196,9 +1231,9 @@ $html = '
             <td style="width: 33%; height: 18px;">Fecha: 22/06/2023  </td>
         </tr>
         <tr style="height: 18px;">
-            <td style="width: 33%; height: 18px; text-align:center;">CONDICIONES GENERALES DE 
+            <td style="width: 33%; height: 18px; text-align:center;font-weight:bold;">CONDICIONES GENERALES DE 
             COMPRA</td>
-            <td style="width: 33%; height: 18px;">Fila 3, Columna 1</td>
+            <td style="width: 33%; height: 18px;"></td>
         </tr>
     </tbody>
 </table>
@@ -1206,13 +1241,13 @@ $html = '
 <br><br><br>
 ';
 
-$content = '
+        $content = '
 
 <p style="text-align: justify; color:black;">A requerimiento de la EMPRESA COMPRADORA, el suministrador le proporcionará copia 
 de los justificantes de pago de las primas y copia de las pólizas contratadas, que no podrán 
 ser modificadas o canceladas hasta que finalice la ejecución de la orden de compra.</p>
 
-<h3>19. CONFIDENCIALIDAD</h3>
+<h3 style="color: #1B4F72;">19. CONFIDENCIALIDAD</h3>
 <p style="text-align: justify; color:black;">Toda la información técnica, económica o comercial relativa a la EMPRESA 
 COMPRADORA, a las sociedades del grupo de la EMPRESA COMPRADORA, a sus 
 clientes o a sus productos, que pueda llegar a conocer el suministrador como consecuencia 
@@ -1226,7 +1261,7 @@ deberá hacerse cuando sea estrictamente necesario para la consecución de los f
 Contrato, garantizando en todo caso el suministrador el cumplimiento por parte de dichos 
 empleados de la obligación de confidencialidad contenida en el párrafo anterior.</p>
 
-<h3>20. FUERZA MAYOR</h3>
+<h3 style="color: #1B4F72;">20. FUERZA MAYOR</h3>
 <p style="text-align: justify; color:black;">Se considera fuerza mayor cualquier acontecimiento imprevisto o que siendo previsible no 
 pueda evitarse y que dificulte extraordinariamente o imposibilite el cumplimiento de las
 obligaciones de cualquiera de las partes. A estos efectos, no se considerará causa de 
@@ -1241,35 +1276,35 @@ minimizar al máximo los inconvenientes que puedan surgir por dicha fuerza mayor
 ';
 
 
-$pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
+        $pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
 
-// Agregar el contenido HTML al PDF
-$pdf->SetFont('helvetica', '', 14);
-$pdf->writeHTML($content, true, false, true, false, '');
-
-
+        // Agregar el contenido HTML al PDF
+        $pdf->SetFont('helvetica', '', 14);
+        $pdf->writeHTML($content, true, false, true, false, '');
 
 
-$pdf->AddPage();
 
 
-// Establecer estilos de tabla
-$style = array(
-    'border' => true,
-    'borderColor' => array(0, 0, 0), // Color del borde: negro
-    'cellPadding' => 2, // Espaciado interno de celda
-    'cellMargin' => 0, // Margen externo de celda
-);
-$pdf->SetFont('helvetica', 'B', 12);
-// Definir contenido de la tabla
-$html = '
+        $pdf->AddPage();
+
+
+        // Establecer estilos de tabla
+        $style = array(
+            'border' => true,
+            'borderColor' => array(0, 0, 0), // Color del borde: negro
+            'cellPadding' => 2, // Espaciado interno de celda
+            'cellMargin' => 0, // Margen externo de celda
+        );
+        $pdf->SetFont('helvetica', 'B', 12);
+        // Definir contenido de la tabla
+        $html = '
 <table border="1" style="width: 100%; height: 72px;">
     <tbody>
         <tr style="height: 18px;">
             <td rowspan="4" style="width: 33%; height: 82px; align-items:center;">
                 <img style="width:160px; display: block; margin-left: auto; margin-right: auto;" src="images/Retos_2.png">
             </td>
-            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;">POLITICA</td>
+            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;font-weight:bold;">POLITICA</td>
             <td style="width: 33%; height: 18px;">Código: SPM7.101.B.1</td>
         </tr>
         <tr style="height: 18px;">
@@ -1279,9 +1314,9 @@ $html = '
             <td style="width: 33%; height: 18px;">Fecha: 22/06/2023  </td>
         </tr>
         <tr style="height: 18px;">
-            <td style="width: 33%; height: 18px; text-align:center;">CONDICIONES GENERALES DE 
+            <td style="width: 33%; height: 18px; text-align:center;font-weight:bold;">CONDICIONES GENERALES DE 
             COMPRA</td>
-            <td style="width: 33%; height: 18px;">Fila 3, Columna 1</td>
+            <td style="width: 33%; height: 18px;"></td>
         </tr>
     </tbody>
 </table>
@@ -1289,7 +1324,7 @@ $html = '
 <br><br><br>
 ';
 
-$content = '
+        $content = '
 
 
 <p style="text-align: justify; color:black;">Cuando acontezca un supuesto de fuerza mayor el plazo de cumplimiento se prorrogará 
@@ -1298,20 +1333,20 @@ mayor. Si el evento de fuerza mayor durase más de 60 días o si, dadas las circ
 fuera obvio que durará 60 días, la EMPRESA COMPRADORA podrá resolver el contrato 
 mediante notificación al suministrador.</p>
 
-<h3>21. INVALIDEZ</h3>
+<h3 style="color: #1B4F72;">21. INVALIDEZ</h3>
 <p style="text-align: justify; color:black;">Cuando alguna de las cláusulas del Contrato o de estas CC fuese declarada ilegal, nula o 
 inejecutable, total o parcialmente, dicha ilegalidad, nulidad o inejecutabilidad no se 
 extenderá al resto de cláusulas, las cuales se mantendrán en vigor. Las partes acuerdan 
 sustituir cualquier cláusula que deviniese ilegal, nula o inejecutable por otra válida, de 
 efecto lo más similar posible.</p>
 
-<h3>22. DURACIÓN Y CANCELACIÓN</h3>
+<h3 style="color: #1B4F72;">22. DURACIÓN Y CANCELACIÓN</h3>
 <p style="text-align: justify; color:black;">Estas CC comenzarán a surtir efectos desde la aceptación de la correspondiente orden de 
 compra relacionada con estas condiciones y permanecerán vigentes mientras dure la relación 
 comercial entre la EMPRESA COMPRADORA y SUMINISTRADOR, así como durante el 
 correspondiente plazo de garantía.</p>
 
-<h3>23. FRAUDE Y CORRUPCIÓN</h3>
+<h3 style="color: #1B4F72;">23. FRAUDE Y CORRUPCIÓN</h3>
 <p style="text-align: justify; color:black;">El suministrador impedirá cualquier actividad fraudulenta de sus representantes en relación 
 con la recepción de cualquier suma de dinero procedente de la EMPRESA COMPRADORA
 o las sociedades de su grupo. El suministrador asume y garantiza en relación con cualquier 
@@ -1326,34 +1361,34 @@ EMPRESA COMPRADORA.</p>
 ';
 
 
-$pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
+        $pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
 
-// Agregar el contenido HTML al PDF
-$pdf->SetFont('helvetica', '', 14);
-$pdf->writeHTML($content, true, false, true, false, '');
-
-
-
-$pdf->AddPage();
+        // Agregar el contenido HTML al PDF
+        $pdf->SetFont('helvetica', '', 14);
+        $pdf->writeHTML($content, true, false, true, false, '');
 
 
-// Establecer estilos de tabla
-$style = array(
-    'border' => true,
-    'borderColor' => array(0, 0, 0), // Color del borde: negro
-    'cellPadding' => 2, // Espaciado interno de celda
-    'cellMargin' => 0, // Margen externo de celda
-);
-$pdf->SetFont('helvetica', 'B', 12);
-// Definir contenido de la tabla
-$html = '
+
+        $pdf->AddPage();
+
+
+        // Establecer estilos de tabla
+        $style = array(
+            'border' => true,
+            'borderColor' => array(0, 0, 0), // Color del borde: negro
+            'cellPadding' => 2, // Espaciado interno de celda
+            'cellMargin' => 0, // Margen externo de celda
+        );
+
+        // Definir contenido de la tabla
+        $html = '
 <table border="1" style="width: 100%; height: 72px;">
     <tbody>
         <tr style="height: 18px;">
             <td rowspan="4" style="width: 33%; height: 82px; align-items:center;">
                 <img style="width:160px; display: block; margin-left: auto; margin-right: auto;" src="images/Retos_2.png">
             </td>
-            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;">POLITICA</td>
+            <td rowspan="3" style="width: 33%; height: 54px; text-align:center;font-weight:bold;">POLITICA</td>
             <td style="width: 33%; height: 18px;">Código: SPM7.101.B.1</td>
         </tr>
         <tr style="height: 18px;">
@@ -1363,17 +1398,16 @@ $html = '
             <td style="width: 33%; height: 18px;">Fecha: 22/06/2023  </td>
         </tr>
         <tr style="height: 18px;">
-            <td style="width: 33%; height: 18px; text-align:center;">CONDICIONES GENERALES DE 
-            COMPRA</td>
-            <td style="width: 33%; height: 18px;">Fila 3, Columna 1</td>
+            <td style="width: 33%; height: 18px; text-align:center;font-weight:bold;">CONDICIONES GENERALES DE COMPRA</td>
+            <td style="width: 33%; height: 18px;"></td>
         </tr>
     </tbody>
 </table>
 
-<br><br><br>
+<br><br>
 ';
 
-$content .= '
+        $html .= '
 <p style="text-align: justify; color:black;">Si el suministrador, o quienes actúen en su nombre y representación, infringe lo dispuesto 
 en este párrafo, la EMPRESA COMPRADORA podrá (i) resolver todos los Contratos con el 
 suministrador y/o las sociedades de su grupo y reclamar al suministrador cualesquiera 
@@ -1385,12 +1419,11 @@ sido objeto de resolución como si no lo hubiese sido.</p>
 ';
 
 
-$pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
+        $pdf->writeHTML($html, true, false, true, false, ''); // Escribir la tabla en el PDF
         ob_end_clean();
         // Close and output PDF document
         // This method has several options, check the source code documentation for more information.
         $pdf->Output('orden-de-compra_' . $respuestaFac['codigo'] . '.pdf', 'I');
-
     }
 }
 

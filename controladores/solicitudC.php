@@ -60,6 +60,8 @@ class SolicitudC
         return $respuesta;
     }
 
+ 
+
 
     /* -------------------------------------------------------------------------- */
     /*                         VISTA DE SOLICITUD MANAGER CONSULTA TRAER DATOS    */
@@ -68,7 +70,7 @@ class SolicitudC
     {
         //Creamos la variable de Bd
 
-        $tablaBD = "vista_solicitud_general";
+        $tablaBD = "vista_solicitud_factura";
 
 
         //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
@@ -94,13 +96,14 @@ class SolicitudC
 
 
     /* -------------------------------------------------------------------------- */
-    /*                         VISTA DE SOLICITUD MANAGER CONSULTA TRAER DATOS    */
+    /*                         VISTA DE SOLICITUD MANAGER CONSULTA TRAER DATOS
+                            */
     /* -------------------------------------------------------------------------- */
     static public function VistaSolicitudCOC($item2, $valor2)
     {
         //Creamos la variable de Bd
 
-        $tablaBD = "vista_solicitud_general";
+        $tablaBD = "vista_solicitud_factura";
 
 
         //Solicitamos una respuesta a nuestro modelo y conocectamos una funcion con VerUsuariosM enviaremos los parametros $tablaBD
@@ -314,7 +317,7 @@ class SolicitudC
 
             if ($respuesta) {
                 echo '<script>
-            window.location = "solicitud-compras";
+            window.location = "orden-compraD";
             </script>';
             }
         }
