@@ -149,31 +149,24 @@ class ClientesC
                      "credito_cli" => $_POST["credito_cliE"]
                 );
 
-                $respuesta = ClientesM::AgregarClientesM($tabla, $datosC);
+                $respuesta = ClientesM::ActualizarClientesM($tabla, $datosC);
 
                 if($respuesta == true){
                     echo '<script>
-                    Swal.fire({
-                        icon: "success",
-                        title: "Clente ha sido agregado correctamente",
-                        text: "Something went wrong!",
-                        
-                    }).then(function() {
                         window.location = "clientes";
-                    });
-                </script>';
+                        </script>';
 
                 }else{
-                    echo '<script>
-                    Swal.fire({
-                        title: "Ocurrió un error al editar cliente!",
-                        icon: "error",
-                       
-                        confirmButtonText: "Cerrar"
-                    }).then(function() {
-                        window.location = "clientes";	
-                    });
-                </script>';
+                    echo '<div class="alert alert-dismissible fade show py-2 bg-danger">
+					<div class="d-flex align-items-center">
+					  <div class="fs-3 text-white"><ion-icon name="checkmark-circle-sharp" role="img" class="md hydrated" aria-label="checkmark circle sharp"></ion-icon>
+					  </div>
+					  <div class="ms-3">
+						<div class="text-white">Error al actualizar cliente!</div>
+					  </div>
+					</div>
+					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+				  </div>';
                 }
             }
         }
@@ -195,25 +188,16 @@ class ClientesC
 
             if($respuesta == true){
                 echo '<script>
-                Swal.fire({
-                    title: "Cliente eliminado correctamente!",
-                    icon: "success",
-                    timer: 3000,
-                    confirmButtonText: "Cerrar"
-                }).then(function() {
+                
                     window.location = "clientes";	
-                });
+              
             </script>';
             }else{
                 echo '<script>
-                Swal.fire({
-                    title: "Ocurrió un error al eliminar cliente!",
-                    icon: "error",
-                    timer: 3000,
-                    confirmButtonText: "Cerrar"
-                }).then(function() {
+                
+               
                     window.location = "clientes";	
-                });
+             
             </script>';
             }
         }

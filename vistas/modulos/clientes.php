@@ -15,11 +15,6 @@
 
 <!--start wrapper-->
 <div class="wrapper">
-
-
-
-
-
     <!-- start page content wrapper-->
     <div class="page-content-wrapper">
         <!-- start page content-->
@@ -70,23 +65,16 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="example2" class="table table-striped table-bordered TB">
+                        <table id="example" class="table table-striped table-bordered TB">
                             <thead>
                                 <tr>
                                     <th>Nombre comercial</th>
-                                    <th>Pais</th>
                                     <th>Actividad</th>
-                                    <th>Servicios</th>
-                                    <th>Distribución</th>
-                                    <th>Capacitación</th>                                  
-                                    <th>Rfc</th>
+                                    <th>Servicios</th>                                                         
                                     <th>Dirección</th>
                                     <th>Contacto compras</th>
                                     <th>Teléfono</th>
                                     <th>Email</th>
-                                    <th>Contacto pago</th>
-                                    <th>Condiciones de venta</th>
-                                    <th>Crédito</th>
                                     <th>Acciones</th>
 
                                 </tr>
@@ -105,20 +93,13 @@
 
                                     echo '<tr>
                                             <td>' . $value["nombrecomercial_cli"] . '</td>
-                                            <td>' . $value["pais_cli"] . '</td>
                                             <td>' . $value["actividad_cli"] . '</td>
                                             <td>' . $value["servicios_cli"] . '</td>
-                                            <td>' . $value["distribucion_cli"] . '</td>
-                                            <td>' . $value["capacitacion_cli"] . '</td>
-                                           
-                                            <td>' . $value["rfc_cli"] . '</td>
                                             <td>' . $value["direccion_cli"] . '</td>
                                             <td>' . $value["contacto_compras"] . '</td>
                                             <td>' . $value["telefono_cli"] . '</td>
                                             <td>' . $value["correo_cli"] . '</td>
-                                            <td>' . $value["contacto_pago"] . '</td>
-                                            <td>' . $value["condiventa_cli"] . '</td>
-                                            <td>' . $value["credito_cli"] . '</td>
+                                           
                                             ';
 
 
@@ -129,7 +110,6 @@
                                             <td>
                                             <div class="btn-group">
                                             <button class="btn btn-warning EditarCliente" idCliente="' . $value["id"] . '" data-bs-toggle="modal" data-bs-target="#editarClientes"><i class="fadeIn animated bx bx-edit-alt"></i></button>
-
                                             <button class="btn btn-danger BorrarClientes" idCliente="' . $value["id"] . '"  ><i class="fadeIn animated bx bx-trash-alt"></i></button>
                                         </div>
                                             </td>
@@ -138,11 +118,7 @@
                                 }
 
 
-                                // $item = null;
-                                // $valor = null;
-
-                                // $editarU = UsuariosC::EUsuariosC($item, $valor);
-
+                                
                                 ?>
 
 
@@ -163,7 +139,6 @@
 <!--Start Back To Top Button-->
 <a href="javaScript:;" class="back-to-top"><ion-icon name="arrow-up-outline"></ion-icon></a>
 <!--End Back To Top Button-->
-
 
 
 <!--start overlay-->
@@ -320,87 +295,73 @@
                                         <label class="form-label">Nombre comercial</label>
                                         <input type="text" class="form-control" id="nombrecomercial_cliE" name="nombrecomercial_cliE" required>
                                         <input type="hidden" id="idCliente" name="idCliente">
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">País</label>
                                         <input type="text" class="form-control" id="pais_cliE" name="pais_cliE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                    
                                     <div class="col-md-6">
                                         <label class="frm-label">Actividad comercial</label>
                                         <input type="text" class="form-control" id="actividad_cliE" name="actividad_cliE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">Servicios </label>
                                         <input type="text" class="form-control" id="servicios_cliE" name="servicios_cliE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">Distribución</label>
                                         <input type="text" class="form-control" id="distribucion_cliE" name="distribucion_cliE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">Capacitación</label>
                                         <input type="text" class="form-control" id="capacitacion_cliE" name="capacitacion_cliE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">RFC</label>
                                         <input type="text" class="form-control" id="rfc_cliE" name="rfc_cliE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">Dirección</label>
                                         <input type="text" class="form-control" id="direccion_cliE" name="direccion_cliE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">Contacto de compras</label>
                                         <input type="text" class="form-control" id="contacto_comprasE" name="contacto_comprasE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">Teléfono</label>
                                         <input type="text" class="form-control" id="telefono_cliE" name="telefono_cliE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">Email</label>
                                         <input type="text" class="form-control" id="correo_cliE" name="correo_cliE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">Contacto pago</label>
                                         <input type="text" class="form-control" id="contacto_pagoE" name="contacto_pagoE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">Condiciones de venta</label>
                                         <input type="text" class="form-control" id="condiventa_cliE" name="condiventa_cliE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <label class="frm-label">Crédito</label>
                                         <input type="text" class="form-control" id="credito_cliE" name="credito_cliE" required>
-                                        <div class="valid-feedback">Campo relleno correctamente!</div>
-                                        <div class="invalid-feedback">Campo requerido, favor de rellenar!</div>
+                                        
                                     </div>
                                   
                             

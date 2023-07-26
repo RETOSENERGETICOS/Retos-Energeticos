@@ -32,7 +32,22 @@ $(".TB").on("click", ".BorrarU", function(){
 	/* -------------------------------------------------------------------------- */
 	/*                         Abrimos window location qu                         */
 	/* -------------------------------------------------------------------------- */
-	window.location = "index.php?url=usuarios&Uid="+Uid+"&Ufoto="+Ufoto+"&Ufirma="+Ufirma;
+
+	Swal.fire({
+        title: '¿Estas realmente seguro?',
+        text: "No podras revertir este proceso!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí!'
+      }).then(function(result) {
+        if (result.value) {
+			window.location = "index.php?url=usuarios&Uid="+Uid+"&Ufoto="+Ufoto+"&Ufirma="+Ufirma;
+        
+        }
+      })
+	
 })
 
 

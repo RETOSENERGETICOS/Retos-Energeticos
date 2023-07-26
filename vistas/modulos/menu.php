@@ -56,8 +56,7 @@
 
       if (
         $_SESSION["rol"] == "Administrador" ||  $_SESSION["rol"] == "Compras"
-        ||  $_SESSION["rol"] == "Manager" ||  $_SESSION["rol"] == "Director"
-      ) {
+        ||  $_SESSION["rol"] == "Manager" ||  $_SESSION["rol"] == "Director") {
         echo '<li> <a href="proveedores">
                         <i class="lni lni-delivery"></i>&nbsp Proveedores
                           </a>
@@ -66,12 +65,18 @@
                         ';
       }
     }
-    
+
+    if ($_SESSION["rol"] == "Compras") {
+      echo '<li> <a href="proveedores">
+                        <i class="lni lni-delivery"></i>&nbsp Proveedores
+                          </a>
+                        </li>';
+    }
+
 
     if (
       $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Empleado"
-      || $_SESSION["rol"] == "Compras"  || $_SESSION["rol"] == "Director"
-    ) {
+      || $_SESSION["rol"] == "Compras"  || $_SESSION["rol"] == "Director") {
       echo '   
        <li>
                 <a class="has-arrow" href="javascript:;">
@@ -81,22 +86,20 @@
                   <div class="menu-title">Compras</div>
                 </a>
                 <ul>';
-                if (
-                  $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Empleado"
-                  || $_SESSION["rol"] == "Compras"  
-                ) {
-                  echo'
+      if (
+        $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Empleado"
+        || $_SESSION["rol"] == "Compras") {
+        echo '
                   <li> <a href="solicitud-compraCO">
                   <i class="fadeIn animated bx bx-receipt"></i>&nbsp Solicitud de compra
                     </a>
                   </li>
 
         </li>';
-                }
+      }
 
       if (
-        $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Director" 
-      ) {
+        $_SESSION["rol"] == "Administrador" || $_SESSION["rol"] == "Director") {
         echo '<li> <a href="orden-compraD">
                            <i class="fadeIn animated bx bx-clipboard"></i>&nbsp Orden de compra
                              </a>
@@ -107,7 +110,7 @@
     }
 
     if (
-       $_SESSION["rol"] == "Manager" 
+      $_SESSION["rol"] == "Manager"
     ) {
       echo '   
        <li>
@@ -122,10 +125,7 @@
                   <i class="fadeIn animated bx bx-receipt"></i>&nbsp Solicitud de compra
                     </a>
                   </li>
-
         </li>';
-
-     
     }
 
     if ($_SESSION["rol"] == "Administrador") {

@@ -70,7 +70,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="example2" class="table table-striped table-bordered TB">
+                        <table id="example" class="table table-striped table-bordered TB">
                             <thead>
                                 <tr>
                                     <th>Usuario</th>

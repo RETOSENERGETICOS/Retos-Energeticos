@@ -1,4 +1,32 @@
 /* -------------------------------------------------------------------------- */
+/*                              ELIMINAR CLIENTES                             */
+/* -------------------------------------------------------------------------- */
+
+$(".TB").on("click", ".BorrarClientes", function(){
+
+    var idCliente = $(this).attr("idCliente");
+
+    Swal.fire({
+        title: '¿Estas realmente seguro?',
+        text: "No podras revertir este proceso!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí!'
+      }).then(function(result) {
+        if (result.value) {
+            window.location = "index.php?url=clientes&idCliente="+idCliente;
+        
+        }
+      })
+          
+        
+
+})
+
+
+/* -------------------------------------------------------------------------- */
 /*                               EDITAR CLIENTE                               */
 /* -------------------------------------------------------------------------- */
 
@@ -43,29 +71,3 @@ $(".TB").on("click",".EditarCliente", function(){
     })
 })
 
-/* -------------------------------------------------------------------------- */
-/*                              ELIMINAR CLIENTES                             */
-/* -------------------------------------------------------------------------- */
-
-$(".TB").on("click", ".BorrarClientes", function(){
-
-    var idCliente = $(this).attr("idCliente");
-
-    Swal.fire({
-        title: '¿Estas realmente seguro?',
-        text: "No podras revertir este proceso!",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#3085d6',
-        cancelButtonColor: '#d33',
-        confirmButtonText: 'Sí!'
-      }).then(function(result) {
-        if (result.value) {
-            window.location = "index.php?url=clientes&idCliente="+idCliente;
-        
-        }
-      })
-          
-        
-
-})

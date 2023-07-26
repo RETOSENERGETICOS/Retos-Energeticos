@@ -12,21 +12,28 @@
 /* -------------------------------------------------------------------------- */
 $(".TB").on("click", ".BorrarP", function(){
 
-	/* -------------------------------------------------------------------------- */
-	/*     creamos las variables Pid que sera igual a lo que estemos haciendo     
-	       click en su atribbuto que esta en el atributo 						  */
-	/* -------------------------------------------------------------------------- */
-	
-	/* -------------------------------------------------------------------------- */
-	/*                              del boton borrar                              */
-	/* -------------------------------------------------------------------------- */
+
 	var Pid = $(this).attr("Pid");
 
-	/* -------------------------------------------------------------------------- */
-	/*                           Abrimos window location                          */
-	/* -------------------------------------------------------------------------- */
-	window.location = "index.php?url=proveedores&Pid="+Pid;
+	Swal.fire({
+		title: '¿Estas realmente seguro?',
+		text: "No podras revertir este proceso!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Sí!'
+	  }).then(function(result) {
+		if (result.value) {
+			window.location = "index.php?url=proveedores&Pid="+Pid;
+		
+		}
+	  })
+
+	
+	
 })
+
 
 
 /* -------------------------------------------------------------------------- */
@@ -51,16 +58,24 @@ $(".TB").on("click", ".EditarP", function(){
 		dataType: "json",
 		success: function(respuesta){
 
-			$("#nombreE").val(respuesta["nombre"]);
+
+			$("#familiaN").val(respuesta["familia_prov"]);
+			$("#nombreE").val(respuesta["nombre_prov"]);
 			$("#Pid").val(respuesta["id"]);
+			$("#razonsN").val(respuesta["razon_sprov"]);
 			$("#rfcE").val(respuesta["rfc"]);
-			$("#direccionE").val(respuesta["direccion"]);
-			$("#telefonoE").val(respuesta["telefono"]);
+			$("#act_comN").val(respuesta["act_comercial_prov"]);
 			$("#atnE").val(respuesta["atn"]);
-            $("#emailE").val(respuesta["email"]);
-	
-			
-			
+			$("#emailE").val(respuesta["email"]);
+			$("#pag-webN").val(respuesta["pag_web_prov"]);
+			$("#telefonoE").val(respuesta["telefono"]);
+			$("#direccionE").val(respuesta["direccion"]);
+			$("#cat-servicioE").html(respuesta["catalogo_servicio_prov"]);
+      		$("#cat-servicioE").val(respuesta["catalogo_servicio_prov"]);
+			$("#auto-pagoN").val(respuesta["autorizacion_pago_prov"]);
+			$("#otrosE").val(respuesta["otros"]);
+		
+
 		}
 
 	})
